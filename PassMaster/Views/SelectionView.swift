@@ -24,6 +24,37 @@ struct SelectionView: View {
     
     var body: some View {
         NavigationView {
+            List(model.superMarkets, id: \.self) { selectedLogin in
+                Button(action: {
+                    self.selectedLogin = selectedLogin
+                    self.canShowDetailsView.toggle()
+                }, label: {
+                    Text(selectedLogin.name)
+                }).sheet(isPresented: $canShowDetailsView) {
+                    DetailsView(selection: $selectedLogin)
+                }
+            }.navigationBarTitle(Text("PassMaster"))
+            
+            /*
+            List(model.superMarkets, id: \.self) { selectedLogin in
+                Button(selectedLogin.name) {
+                    canShowDetailsView.toggle()
+                }.sheet(isPresented: $canShowDetailsView) {
+                    DetailsView(selection: $selectedLogin)
+                }
+                
+            }.navigationBarTitle(Text("PassMaster"))
+            */
+            
+            /*
+            List(model.superMarkets, id: \.self) { selectedLogin in
+                NavigationLink(destination: DetailsView(selection: $selectedLogin)) {
+                    Text(selectedLogin.name)
+                }
+            }.navigationBarTitle(Text("PassMaster"))
+            */
+            
+            /*
             Form{
                 Section{
                     Picker("Select a login", selection: $selectedLogin) {
@@ -53,6 +84,7 @@ struct SelectionView: View {
                         }
                     }
                 }.navigationBarTitle(Text("PassMaster"))
+            */
             }
         }
     }
