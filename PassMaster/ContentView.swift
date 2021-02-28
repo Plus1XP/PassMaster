@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var canShowSelectionView: Bool = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button(action: {
+            print("Button Pushed")
+            self.canShowSelectionView = true
+        }, label: {
+            Text("Login")
+        }).fullScreenCover(isPresented: self.$canShowSelectionView) {
+            SelectionView()
+        }
     }
 }
 
