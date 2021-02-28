@@ -11,6 +11,11 @@
 		6E9AB55C25E7D95400DC88FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9AB55B25E7D95400DC88FF /* ContentView.swift */; };
 		6E9AB55E25E7D95700DC88FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9AB55D25E7D95700DC88FF /* Assets.xcassets */; };
 		6E9AB56125E7D95700DC88FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9AB56025E7D95700DC88FF /* Preview Assets.xcassets */; };
+		6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D74F25EABB33009E00A6 /* SelectionView.swift */; };
+		6EA5D75325EAD87B009E00A6 /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D75225EAD87B009E00A6 /* CreationView.swift */; };
+		6EF147EC25E7FA51005A21F8 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EB25E7FA51005A21F8 /* AccountModel.swift */; };
+		6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */; };
+		6EF1481025EAA183005A21F8 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF1480F25EAA183005A21F8 /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		6E9AB55D25E7D95700DC88FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E9AB56025E7D95700DC88FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6E9AB56225E7D95700DC88FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EA5D74F25EABB33009E00A6 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		6EA5D75225EAD87B009E00A6 /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
+		6EF147EB25E7FA51005A21F8 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProcessor.swift; sourceTree = "<group>"; };
+		6EF1480F25EAA183005A21F8 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +62,15 @@
 		6E9AB55825E7D95400DC88FF /* PassMaster */ = {
 			isa = PBXGroup;
 			children = (
-				6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */,
-				6E9AB55B25E7D95400DC88FF /* ContentView.swift */,
 				6E9AB55D25E7D95700DC88FF /* Assets.xcassets */,
+				6E9AB55B25E7D95400DC88FF /* ContentView.swift */,
 				6E9AB56225E7D95700DC88FF /* Info.plist */,
+				6EF147E825E7F830005A21F8 /* Models */,
+				6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */,
 				6E9AB55F25E7D95700DC88FF /* Preview Content */,
+				6EF147EE25E81F6B005A21F8 /* Services */,
+				6EF147EA25E7F859005A21F8 /* ViewModels */,
+				6EF147E925E7F850005A21F8 /* Views */,
 			);
 			path = PassMaster;
 			sourceTree = "<group>";
@@ -67,6 +81,39 @@
 				6E9AB56025E7D95700DC88FF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6EF147E825E7F830005A21F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6EF147EB25E7FA51005A21F8 /* AccountModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6EF147E925E7F850005A21F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6EF1480F25EAA183005A21F8 /* DetailsView.swift */,
+				6EA5D74F25EABB33009E00A6 /* SelectionView.swift */,
+				6EA5D75225EAD87B009E00A6 /* CreationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6EF147EA25E7F859005A21F8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6EF147EE25E81F6B005A21F8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +186,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E9AB55C25E7D95400DC88FF /* ContentView.swift in Sources */,
+				6EF1481025EAA183005A21F8 /* DetailsView.swift in Sources */,
+				6EF147EC25E7FA51005A21F8 /* AccountModel.swift in Sources */,
+				6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */,
+				6EA5D75325EAD87B009E00A6 /* CreationView.swift in Sources */,
 				6E9AB55A25E7D95400DC88FF /* PassMasterApp.swift in Sources */,
+				6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
