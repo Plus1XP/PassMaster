@@ -24,6 +24,7 @@ struct SelectionView: View {
     
     var body: some View {
         NavigationView {
+            /*
             List(model.superMarkets, id: \.self) { selectedLogin in
                 Button(action: {
                     self.selectedLogin = selectedLogin
@@ -32,6 +33,24 @@ struct SelectionView: View {
                     Text(selectedLogin.name)
                 }).sheet(isPresented: $canShowDetailsView) {
                     DetailsView(selection: $selectedLogin)
+                }
+            }.navigationBarTitle(Text("PassMaster"))
+            */
+            
+            Form{
+                Section{
+                    Picker("Select a login", selection: $selectedLogin) {
+                        ForEach(model.superMarkets, id: \.self) { AccountModel in
+                            Button(action: {
+                                self.selectedLogin = AccountModel
+                                self.canShowDetailsView.toggle()
+                            }, label: {
+                                Text(AccountModel.name)
+                            }).sheet(isPresented: $canShowDetailsView) {
+                                DetailsView(selection: $selectedLogin)
+                            }
+                        }
+                    }
                 }
             }.navigationBarTitle(Text("PassMaster"))
             
