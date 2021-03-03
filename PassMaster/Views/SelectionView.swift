@@ -11,105 +11,66 @@ struct SelectionView: View {
     
     @StateObject private var model = AccountProcessor()
     
-    //let logins = ["Gmail", "Hotmail", "Yahoo"]
-    @State private var selectedLogin: AccountModel = AccountModel(id: 1, name: "Example", userName: "JT@Example.com", password: "M0th3rl4nd!", uRL: "www.example.com", notes: "In Russia password saves you!")
+    @State private var selectedLogin: PasswordModel = PasswordModel(id: 1, name: "Example", userName: "JT@Example.com", password: "M0th3rl4nd!", uRL: "www.example.com", notes: "In Russia password saves you!")
     
-    //let cards = ["Amex", "Visa", "MasterCard"]
-    @State private var selectedCard = "Amex"
+    @State private var selectedCard: CardModel?
     
-    let notes = ["Docter", "Council", "Shopping"]
-    @State private var selectedNote = "Docter"
+    @State private var selectedNote: NoteModel?
     
     @State private var canShowDetailsView = false
     
     var body: some View {
         NavigationView {
-            /*
-            List(model.superMarkets, id: \.self) { selectedLogin in
-                Button(action: {
-                    self.selectedLogin = selectedLogin
-                    self.canShowDetailsView.toggle()
-                }, label: {
-                    Text(selectedLogin.name)
-                }).sheet(isPresented: $canShowDetailsView) {
-                    DetailsView(selection: $selectedLogin)
-                }
-            }.navigationBarTitle(Text("PassMaster"))
-            */
-            
             Form{
                 Section{
                     Picker("Select a login", selection: $selectedLogin) {
-                        ForEach(model.superMarkets, id: \.self) { AccountModel in
+                        ForEach(model.Passwords, id: \.self) { password in
                             Button(action: {
-                                self.selectedLogin = AccountModel
+                                self.selectedLogin = password
                                 self.canShowDetailsView.toggle()
                             }, label: {
-                                Text(AccountModel.name)
+                                Text(password.name)
                             }).sheet(isPresented: $canShowDetailsView) {
                                 DetailsView(selection: $selectedLogin)
                             }
                         }
                     }
                 }
-            }.navigationBarTitle(Text("PassMaster"))
-            
-            /*
-            List(model.superMarkets, id: \.self) { selectedLogin in
-                Button(selectedLogin.name) {
-                    canShowDetailsView.toggle()
-                }.sheet(isPresented: $canShowDetailsView) {
-                    DetailsView(selection: $selectedLogin)
-                }
-                
-            }.navigationBarTitle(Text("PassMaster"))
-            */
-            
-            /*
-            List(model.superMarkets, id: \.self) { selectedLogin in
-                NavigationLink(destination: DetailsView(selection: $selectedLogin)) {
-                    Text(selectedLogin.name)
-                }
-            }.navigationBarTitle(Text("PassMaster"))
-            */
-            
-            /*
-            Form{
-                Section{
-                    Picker("Select a login", selection: $selectedLogin) {
-                        ForEach(model.superMarkets) { AccountModel in Button(AccountModel.name) {
-                            canShowDetailsView.toggle()
-                        }.sheet(isPresented: $canShowDetailsView) {
-                            DetailsView(selection: $selectedLogin)
-                        }
-                        }
-                    }
-                }
-                
                 Section{
                     Picker("Select a card", selection: $selectedCard) {
-                        ForEach(model.cards, id: \.self) {
-                            Button($0) {
+                        ForEach(model.Cards, id: \.self) { card in
+                            Button(action: {
+                                self.selectedCard = card
+                                self.canShowDetailsView.toggle()
+                            }, label: {
+                                Text(card.name)
+                            }).sheet(isPresented: $canShowDetailsView) {
+                                //DetailsView(selection: $selectedCard)
                             }
                         }
                     }
                 }
-                
-                    Section{
-                        Picker("Select a note", selection: $selectedNote) {
-                            ForEach(0 ..< notes.count) {
-                                Text(self.notes[$0])
+                Section{
+                    Picker("Select a note", selection: $selectedNote) {
+                        ForEach(model.Notes, id: \.self) { note in
+                            Button(action: {
+                                self.selectedNote = note
+                                self.canShowDetailsView.toggle()
+                            }, label: {
+                                Text(note.title)
+                            }).sheet(isPresented: $canShowDetailsView) {
+                                //DetailsView(selection: $selectedNote)
                             }
                         }
                     }
-                }.navigationBarTitle(Text("PassMaster"))
-            */
-            }
+                }
+            }.navigationBarTitle(Text("PassMaster"))
         }
     }
-    
-    struct SelectionView_Previews: PreviewProvider {
-        static var previews: some View {
-            SelectionView()
-        }
+}
+
+struct SelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        SelectionView()
     }
+}

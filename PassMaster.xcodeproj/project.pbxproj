@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840825EFEE67000C5B38 /* NoteModel.swift */; };
+		6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840B25EFF0A7000C5B38 /* CardModel.swift */; };
 		6E9AB55A25E7D95400DC88FF /* PassMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */; };
 		6E9AB55C25E7D95400DC88FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9AB55B25E7D95400DC88FF /* ContentView.swift */; };
 		6E9AB55E25E7D95700DC88FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9AB55D25E7D95700DC88FF /* Assets.xcassets */; };
 		6E9AB56125E7D95700DC88FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9AB56025E7D95700DC88FF /* Preview Assets.xcassets */; };
 		6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D74F25EABB33009E00A6 /* SelectionView.swift */; };
 		6EA5D75325EAD87B009E00A6 /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D75225EAD87B009E00A6 /* CreationView.swift */; };
-		6EF147EC25E7FA51005A21F8 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EB25E7FA51005A21F8 /* AccountModel.swift */; };
+		6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */; };
 		6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */; };
 		6EF1481025EAA183005A21F8 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF1480F25EAA183005A21F8 /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E66840825EFEE67000C5B38 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		6E66840B25EFF0A7000C5B38 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		6E9AB55625E7D95400DC88FF /* PassMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassMasterApp.swift; sourceTree = "<group>"; };
 		6E9AB55B25E7D95400DC88FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,7 +31,7 @@
 		6E9AB56225E7D95700DC88FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EA5D74F25EABB33009E00A6 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		6EA5D75225EAD87B009E00A6 /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
-		6EF147EB25E7FA51005A21F8 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProcessor.swift; sourceTree = "<group>"; };
 		6EF1480F25EAA183005A21F8 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +90,9 @@
 		6EF147E825E7F830005A21F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6EF147EB25E7FA51005A21F8 /* AccountModel.swift */,
+				6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */,
+				6E66840825EFEE67000C5B38 /* NoteModel.swift */,
+				6E66840B25EFF0A7000C5B38 /* CardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,9 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E9AB55C25E7D95400DC88FF /* ContentView.swift in Sources */,
+				6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */,
 				6EF1481025EAA183005A21F8 /* DetailsView.swift in Sources */,
-				6EF147EC25E7FA51005A21F8 /* AccountModel.swift in Sources */,
+				6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */,
 				6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */,
+				6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */,
 				6EA5D75325EAD87B009E00A6 /* CreationView.swift in Sources */,
 				6E9AB55A25E7D95400DC88FF /* PassMasterApp.swift in Sources */,
 				6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */,
