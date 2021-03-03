@@ -9,26 +9,33 @@ import Foundation
 
 class AccountProcessor : ObservableObject{
     
-    @Published var logins = ["Gmail", "Hotmail", "Yahoo"]
-    
-    @Published var cards = ["Amex", "Visa", "MasterCard"]
-    
-    @Published var superMarkets: [AccountModel]
+    @Published var Passwords: [PasswordModel]
+    @Published var Cards: [CardModel]
+    @Published var Notes: [NoteModel]
+
     
     init() {
-        self.superMarkets = [ AccountModel(id: 1, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", notes: "Food is nice"),
-                     AccountModel(id: 2, name: "Sainsburrys", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.sainsburrys.com", notes: "Food is nice"),
-                     AccountModel(id: 3, name: "Lidl", userName: "Gunter@gmail.com", password: "GetmeF00d!", uRL: "www.lidl.com", notes: "Food is nice")]
+        self.Passwords = [ PasswordModel(id: 1, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", notes: "Food is nice"),
+                     PasswordModel(id: 2, name: "John Lewis", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.johnlewis.com"),
+                     PasswordModel(id: 3, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", notes: "Just happy to be here")]
+        
+        self.Cards = [CardModel(id: 1, name: "Visa", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
+                       CardModel(id: 2, name: "Mastercard", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
+                       CardModel(id: 3, name: "AMEX", number: 5555123456789900, end: "Dec 22", cvv: 313)]
+        
+        self.Notes = [NoteModel(id: 1, title: "Card Pins", body: "Visa - 1234"),
+                      NoteModel(id: 2, title: "Todo", body: "Go Gym!"),
+                      NoteModel(id: 3, title: "Call Doctor", body: "Tell him about PAIN")]
     }
     
-    var accounts = [AccountModel]()
+    var accounts = [PasswordModel]()
     
-    func AddAccount(account : AccountModel) -> Void{
+    func AddAccount(account : PasswordModel) -> Void{
         
         accounts.append(account)
     }
     
-    func RemoveAccount(account : AccountModel) -> Void {
+    func RemoveAccount(account : PasswordModel) -> Void {
         
         for item in accounts {
             var count = 0
