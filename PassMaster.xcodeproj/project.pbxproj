@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E21C0CB25F2C706006A395E /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0CA25F2C706006A395E /* AccountType.swift */; };
 		6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840825EFEE67000C5B38 /* NoteModel.swift */; };
 		6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840B25EFF0A7000C5B38 /* CardModel.swift */; };
 		6E7F031625F0135D00A3822C /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F031525F0135D00A3822C /* CardDetailsView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E21C0CA25F2C706006A395E /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 		6E66840825EFEE67000C5B38 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		6E66840B25EFF0A7000C5B38 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		6E7F031525F0135D00A3822C /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */,
 				6E66840825EFEE67000C5B38 /* NoteModel.swift */,
 				6E66840B25EFF0A7000C5B38 /* CardModel.swift */,
+				6E21C0CA25F2C706006A395E /* AccountType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				6E9AB55C25E7D95400DC88FF /* ContentView.swift in Sources */,
 				6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */,
 				6EF1481025EAA183005A21F8 /* PasswordDetailsView.swift in Sources */,
+				6E21C0CB25F2C706006A395E /* AccountType.swift in Sources */,
 				6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */,
 				6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */,
 				6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */,
