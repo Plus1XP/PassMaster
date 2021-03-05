@@ -9,6 +9,7 @@ import Foundation
 
 struct CardModel: Hashable {
     var id: Int
+    var AccountType: AccountType
     var name: String
     var number: Int
     var start: String?
@@ -18,6 +19,7 @@ struct CardModel: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(AccountType)
         hasher.combine(name)
         hasher.combine(number)
         hasher.combine(start)
