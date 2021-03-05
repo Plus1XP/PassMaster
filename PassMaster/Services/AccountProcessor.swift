@@ -13,19 +13,20 @@ class AccountProcessor : ObservableObject{
     @Published var Cards: [CardModel]
     @Published var Notes: [NoteModel]
 
+    @Published var Accounts: [AccountType] = [AccountType.Password, AccountType.Card, AccountType.Note]
     
     init() {
-        self.Passwords = [ PasswordModel(id: 1, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", notes: "Food is nice"),
-                     PasswordModel(id: 2, name: "John Lewis", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.johnlewis.com"),
-                     PasswordModel(id: 3, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", notes: "Just happy to be here")]
+        self.Passwords = [ PasswordModel(id: 1, AccountType: AccountType.Password, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", notes: "Food is nice"),
+                     PasswordModel(id: 2, AccountType: AccountType.Password, name: "John Lewis", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.johnlewis.com"),
+                     PasswordModel(id: 3, AccountType: AccountType.Password, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", notes: "Just happy to be here")]
         
-        self.Cards = [CardModel(id: 1, name: "Visa", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
-                       CardModel(id: 2, name: "Mastercard", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
-                       CardModel(id: 3, name: "AMEX", number: 5555123456789900, end: "Dec 22", cvv: 313)]
+        self.Cards = [CardModel(id: 1, AccountType: AccountType.Card, name: "Visa", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
+                       CardModel(id: 2, AccountType: AccountType.Card, name: "Mastercard", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
+                       CardModel(id: 3, AccountType: AccountType.Card, name: "AMEX", number: 5555123456789900, end: "Dec 22", cvv: 313)]
         
-        self.Notes = [NoteModel(id: 1, title: "Card Pins", body: "Visa - 1234"),
-                      NoteModel(id: 2, title: "Todo", body: "Go Gym!"),
-                      NoteModel(id: 3, title: "Call Doctor", body: "Tell him about PAIN")]
+        self.Notes = [NoteModel(id: 1, AccountType: AccountType.Note, title: "Card Pins", body: "Visa - 1234"),
+                      NoteModel(id: 2, AccountType: AccountType.Note, title: "Todo", body: "Go Gym!"),
+                      NoteModel(id: 3, AccountType: AccountType.Note, title: "Call Doctor", body: "Tell him about PAIN")]
     }
     
     var accounts = [PasswordModel]()
