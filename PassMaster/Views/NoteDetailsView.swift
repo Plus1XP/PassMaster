@@ -10,7 +10,7 @@ import SwiftUI
 struct NoteDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject private var model = DetailsViewModel()
+    @ObservedObject private var model = DetailsViewModel()
     
     @Binding var selection: NoteModel
     
@@ -23,10 +23,14 @@ struct NoteDetailsView: View {
                 Section(header: Text("Note Information")) {
                     Text(selection.title)
                     HStack {
-                        Text(selection.body).blur(radius: model.GetTextBlurRadius())
-                        Spacer()
-                        Button(action: {model.isBlurred.toggle()}, label: {
-                            Text(model.GetTextBlurOptions())
+                        TextEditor(text: $selection.body)
+                            .blur(radius: model.GetTextBlurRadius())//.disabled(true)
+                        Button(
+                            action: {
+                                model.isBlurred.toggle()
+                        },
+                            label: {
+                                Text(model.GetTextBlurOptions())
                         })
                     }
                 }
@@ -35,28 +39,36 @@ struct NoteDetailsView: View {
                     Button("Copy Note") {
                         UIPasteboard.general.string = String(selection.body)
                         self.isShowingAlert = true
-                    }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-                    .alert(isPresented: $isShowingAlert) {
-                        Alert(title: Text("Copy \(selection.title) Note"),
-                              message: Text("Note copied \n\(selection.title)"),
-                              dismissButton: .default(Text("OK")))
+                    }.frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        alignment: .center)
+                     .alert(
+                        isPresented: $isShowingAlert) {
+                            Alert(
+                                title: Text("Copy \(selection.title) Note"),
+                                message: Text("Note copied \n\(selection.title)"),
+                                dismissButton: .default(Text("OK")))
                     }
                 }
                 
-            }.navigationBarTitle(Text(selection.title)).navigationBarItems(leading: Button("Dismiss") {
-                presentationMode.wrappedValue.dismiss()
-            }, trailing: HStack(){
-                Image(systemName: "pencil")
-                Button("Edit") {
-                    
-                }
-            })
+            }.navigationBarTitle(Text(selection.title))
+             .navigationBarItems(
+                leading:
+                    Button(action: {
+                            presentationMode.wrappedValue.dismiss() }) {
+                        Label("Dismiss", systemImage: "trash")
+                },
+                trailing:
+                    Button(action: {}) {
+                    Label("Edit", systemImage: "pencil")
+                })
         }
     }
 }
 
 struct NotesDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteDetailsView(selection: .constant(NoteModel(id: 1, title: "Example", body: "Example Text")))
+        NoteDetailsView(selection: .constant(NoteModel(id: 1, AccountType: AccountType.Note, title: "Example", body: "Example Text")))
     }
 }
