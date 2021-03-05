@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CreationView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var name = ""
     @State private var user = ""
     @State private var pass = ""
@@ -24,11 +26,17 @@ struct CreationView: View {
                     TextField("URL", text: $url).keyboardType(.URL)
                     TextField("Notes", text: $notes)
                 }
-            }.navigationBarTitle(Text(name)).navigationBarItems(leading: Button("Cancel") {
-                
-            }, trailing: Button("Save") {
-                
-            })
+            }.navigationBarTitle(Text(name))
+             .navigationBarItems(
+                leading:
+                    Button(action: {
+                            presentationMode.wrappedValue.dismiss() }) {
+                    Label("Disgard", systemImage: "trash")
+                },
+                trailing:
+                    Button(action: {}) {
+                    Label("Save", systemImage: "sdcard")
+                })
         }
     }
 }
