@@ -11,7 +11,7 @@ struct CardDetailsView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject private var model = DetailsViewModel()
+    @ObservedObject private var model = DetailsViewModel()
     
     @Binding var selection: CardModel
     
@@ -25,10 +25,15 @@ struct CardDetailsView: View {
                     Text(selection.name)
                     Text(String(selection.number))
                     HStack {
-                        Text(String(selection.cvv)).blur(radius: model.GetTextBlurRadius())
+                        Text(String(selection.cvv))
+                            .blur(radius: model.GetTextBlurRadius())
                         Spacer()
-                        Button(action: {model.isBlurred.toggle()}, label: {
-                            Text(model.GetTextBlurOptions())
+                        Button(
+                            action: {
+                                model.isBlurred.toggle()
+                        },
+                            label: {
+                                Text(model.GetTextBlurOptions())
                         })
                     }
                     Text(String(selection.start ?? ""))
@@ -36,35 +41,42 @@ struct CardDetailsView: View {
                 }
                 
                 Section(header: Text("Notes")) {
-                    Text(selection.note ?? "")
+                    //TextEditor(text: $selection.note ?? "")
                 }
                 
                 Section() {
                     Button("Copy Number") {
                         UIPasteboard.general.string = String(selection.number)
                         self.isShowingAlert = true
-                    }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                    }.frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        alignment: .center)
                     .alert(isPresented: $isShowingAlert) {
-                        Alert(title: Text("Copy \(selection.name)'s Number"),
-                              message: Text("Number copied \n\(selection.number)"),
-                              dismissButton: .default(Text("OK")))
+                        Alert(
+                            title: Text("Copy \(selection.name)'s Number"),
+                            message: Text("Number copied \n\(selection.number)"),
+                            dismissButton: .default(Text("OK")))
                     }
                 }
                 
-            }.navigationBarTitle(Text(selection.name)).navigationBarItems(leading: Button("Dismiss") {
-                presentationMode.wrappedValue.dismiss()
-            }, trailing: HStack(){
-                Image(systemName: "pencil")
-                Button("Edit") {
-                    
-                }
-            })
+            }.navigationBarTitle(Text(selection.name))
+             .navigationBarItems(
+                leading:
+                    Button(action: {
+                            presentationMode.wrappedValue.dismiss() }) {
+                        Label("Dismiss", systemImage: "trash")
+                },
+                trailing:
+                    Button(action: {}) {
+                    Label("Edit", systemImage: "pencil")
+                })
         }
     }
 }
 
 struct CardDetailsViewModel_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailsView(selection: .constant(CardModel(id: 0, name: "Example", number: 0000000000000000, start: "01 JAN", end: "31 JAN", cvv: 101, note: "Example Account")))
+        CardDetailsView(selection: .constant(CardModel(id: 0, AccountType: AccountType.Card, name: "Example", number: 0000000000000000, start: "01 JAN", end: "31 JAN", cvv: 101, note: "Example Account")))
     }
 }
