@@ -9,6 +9,7 @@ import Foundation
 
 struct PasswordModel: Identifiable, Hashable {
     var id : Int
+    var AccountType: AccountType
     var name : String
     var userName : String
     var password : String
@@ -30,6 +31,7 @@ struct PasswordModel: Identifiable, Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(AccountType)
         hasher.combine(name)
         hasher.combine(userName)
         hasher.combine(password)
