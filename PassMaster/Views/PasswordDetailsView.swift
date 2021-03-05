@@ -11,7 +11,7 @@ struct PasswordDetailsView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject private var model = DetailsViewModel()
+    @ObservedObject private var model = DetailsViewModel()
     
     @Binding var selection: PasswordModel
     
@@ -22,13 +22,22 @@ struct PasswordDetailsView: View {
             Form{
                 
                 Section(header: Text("Login Information")) {
-                    Text(selection.name)
+                    HStack{
+                        Text("Account Name:")
+                        Text(selection.name)
+                    }
+                    //Text(selection.name)
                     Text(selection.userName)
                     HStack {
-                        Text(selection.password).blur(radius: model.GetTextBlurRadius())
+                        Text(selection.password)
+                            .blur(radius: model.GetTextBlurRadius())
                         Spacer()
-                        Button(action: {model.isBlurred.toggle()}, label: {
-                            Text(model.GetTextBlurOptions())
+                        Button(
+                            action: {
+                                model.isBlurred.toggle()
+                            },
+                            label: {
+                                Text(model.GetTextBlurOptions())
                         })
                     }
                     Text(selection.uRL ?? "")
@@ -42,28 +51,35 @@ struct PasswordDetailsView: View {
                     Button("Copy Password") {
                         UIPasteboard.general.string = selection.password
                         self.isShowingAlert = true
-                    }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                    }.frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        alignment: .center)
                     .alert(isPresented: $isShowingAlert) {
-                        Alert(title: Text("Copy \(selection.name)'s Password"),
-                              message: Text("Password copied \n\(selection.password)"),
-                              dismissButton: .default(Text("OK")))
+                        Alert(
+                            title: Text("Copy \(selection.name)'s Password"),
+                            message: Text("Password copied \n\(selection.password)"),
+                            dismissButton: .default(Text("OK")))
                     }
                 }
                 
-            }.navigationBarTitle(Text(selection.name)).navigationBarItems(leading: Button("Dismiss") {
-                presentationMode.wrappedValue.dismiss()
-            }, trailing: HStack(){
-                Image(systemName: "pencil")
-                Button("Edit") {
-                    
-                }
-            })
+            }.navigationBarTitle(Text(selection.name))
+             .navigationBarItems(
+                leading:
+                    Button(action: {
+                            presentationMode.wrappedValue.dismiss() }) {
+                    Label("Dismiss", systemImage: "trash")
+                },
+                trailing:
+                    Button(action: {}) {
+                    Label("Edit", systemImage: "pencil")
+                })
         }
     }
 }
 
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordDetailsView(selection: .constant(PasswordModel(id: 1, name: "Yandex", userName: "Sergi", password: "M0th3rl4nd!", uRL: "www.yandex.com", notes: "In Russia password saves you!")))
+        PasswordDetailsView(selection: .constant(PasswordModel(id: 1, AccountType: AccountType.Password, name: "Yandex", userName: "Sergi", password: "M0th3rl4nd!", uRL: "www.yandex.com", notes: "In Russia password saves you!")))
     }
 }
