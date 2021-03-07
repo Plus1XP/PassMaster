@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PasswordCreationView: View {
     
-    @EnvironmentObject private var model: AccountProcessor
+    @EnvironmentObject var model: AccountProcessor
     @Environment(\.presentationMode) var presentationMode
     
     @State private var name = ""
@@ -36,12 +36,12 @@ struct PasswordCreationView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
+                        presentationMode.wrappedValue.dismiss() }) {
                         Label("Disgard", systemImage: "trash")
                     },
                 trailing:
                     Button(action: {
-                        model.AddPassword(name: name, userName: user, password: pass, memorable: mem, AccountNo: accNo, uRL: url, notes: notes)
+                        self.model.AddPassword(name: name, userName: user, password: pass, memorable: mem, AccountNo: accNo, uRL: url, notes: notes)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Label("Save", systemImage: "sdcard")
