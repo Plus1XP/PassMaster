@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteCreationView: View {
     
-    @EnvironmentObject private var model: AccountProcessor
+    @EnvironmentObject var model: AccountProcessor
     @Environment(\.presentationMode) var presentationMode
     
     @State private var title = ""
@@ -26,12 +26,12 @@ struct NoteCreationView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
+                        presentationMode.wrappedValue.dismiss() }) {
                         Label("Disgard", systemImage: "trash")
                     },
                 trailing:
                     Button(action: {
-                        model.AddNote(title: title, body: noteBody)
+                        self.model.AddNote(title: title, body: noteBody)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Label("Save", systemImage: "sdcard")

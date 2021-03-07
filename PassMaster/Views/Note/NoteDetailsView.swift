@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoteDetailsView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject private var model = DetailsViewModel()

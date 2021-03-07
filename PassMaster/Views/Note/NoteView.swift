@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteView: View {
     
-    @EnvironmentObject private var model: AccountProcessor
+    @EnvironmentObject var model: AccountProcessor
 
     @State private var selectedNote: NoteModel = NoteModel(id: 0, AccountType: AccountType.Note, title: "Example", body: "Example Text")    
     
@@ -18,7 +18,7 @@ struct NoteView: View {
     var body: some View {
         Form{
             Section(header: Text("Notes")){
-                List(model.Notes, id: \.self) { selectedNote in
+                List(self.model.Notes, id: \.self) { selectedNote in
                     Button(
                         action: {
                             self.selectedNote = selectedNote
