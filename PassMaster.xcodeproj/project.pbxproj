@@ -11,6 +11,9 @@
 		6E21C0CE25F2E625006A395E /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0CD25F2E625006A395E /* NoteView.swift */; };
 		6E21C0D125F2E81B006A395E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0D025F2E81B006A395E /* CardView.swift */; };
 		6E21C0D425F2E831006A395E /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0D325F2E831006A395E /* PasswordView.swift */; };
+		6E21C0D825F51AE6006A395E /* PasswordCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0D725F51AE6006A395E /* PasswordCreationView.swift */; };
+		6E21C0DF25F51C5E006A395E /* NoteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */; };
+		6E21C0E225F51C70006A395E /* CardCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0E125F51C70006A395E /* CardCreationView.swift */; };
 		6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840825EFEE67000C5B38 /* NoteModel.swift */; };
 		6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840B25EFF0A7000C5B38 /* CardModel.swift */; };
 		6E7F031625F0135D00A3822C /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F031525F0135D00A3822C /* CardDetailsView.swift */; };
@@ -20,7 +23,6 @@
 		6E9AB56125E7D95700DC88FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9AB56025E7D95700DC88FF /* Preview Assets.xcassets */; };
 		6EA4999A25F00B83006D7FC6 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4999925F00B83006D7FC6 /* DetailsViewModel.swift */; };
 		6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D74F25EABB33009E00A6 /* SelectionView.swift */; };
-		6EA5D75325EAD87B009E00A6 /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D75225EAD87B009E00A6 /* CreationView.swift */; };
 		6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED00F6825F027B500892340 /* NoteDetailsView.swift */; };
 		6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */; };
 		6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */; };
@@ -32,6 +34,9 @@
 		6E21C0CD25F2E625006A395E /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		6E21C0D025F2E81B006A395E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		6E21C0D325F2E831006A395E /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		6E21C0D725F51AE6006A395E /* PasswordCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreationView.swift; sourceTree = "<group>"; };
+		6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCreationView.swift; sourceTree = "<group>"; };
+		6E21C0E125F51C70006A395E /* CardCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationView.swift; sourceTree = "<group>"; };
 		6E66840825EFEE67000C5B38 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		6E66840B25EFF0A7000C5B38 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		6E7F031525F0135D00A3822C /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
@@ -43,7 +48,6 @@
 		6E9AB56225E7D95700DC88FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EA4999925F00B83006D7FC6 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		6EA5D74F25EABB33009E00A6 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
-		6EA5D75225EAD87B009E00A6 /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
 		6ED00F6825F027B500892340 /* NoteDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsView.swift; sourceTree = "<group>"; };
 		6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		6EF147EF25E81F9A005A21F8 /* AccountProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProcessor.swift; sourceTree = "<group>"; };
@@ -61,6 +65,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E21C0D625F51A84006A395E /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				6E21C0D325F2E831006A395E /* PasswordView.swift */,
+				6EF1480F25EAA183005A21F8 /* PasswordDetailsView.swift */,
+				6E21C0D725F51AE6006A395E /* PasswordCreationView.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		6E21C0DB25F51C19006A395E /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				6E7F031525F0135D00A3822C /* CardDetailsView.swift */,
+				6E21C0D025F2E81B006A395E /* CardView.swift */,
+				6E21C0E125F51C70006A395E /* CardCreationView.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		6E21C0DC25F51C21006A395E /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				6ED00F6825F027B500892340 /* NoteDetailsView.swift */,
+				6E21C0CD25F2E625006A395E /* NoteView.swift */,
+				6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
 		6E9AB54D25E7D95400DC88FF = {
 			isa = PBXGroup;
 			children = (
@@ -115,14 +149,10 @@
 		6EF147E925E7F850005A21F8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6EF1480F25EAA183005A21F8 /* PasswordDetailsView.swift */,
+				6E21C0DC25F51C21006A395E /* Note */,
+				6E21C0DB25F51C19006A395E /* Card */,
+				6E21C0D625F51A84006A395E /* Password */,
 				6EA5D74F25EABB33009E00A6 /* SelectionView.swift */,
-				6EA5D75225EAD87B009E00A6 /* CreationView.swift */,
-				6E7F031525F0135D00A3822C /* CardDetailsView.swift */,
-				6ED00F6825F027B500892340 /* NoteDetailsView.swift */,
-				6E21C0CD25F2E625006A395E /* NoteView.swift */,
-				6E21C0D025F2E81B006A395E /* CardView.swift */,
-				6E21C0D325F2E831006A395E /* PasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,13 +249,15 @@
 				6E21C0D125F2E81B006A395E /* CardView.swift in Sources */,
 				6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */,
 				6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */,
+				6E21C0E225F51C70006A395E /* CardCreationView.swift in Sources */,
+				6E21C0DF25F51C5E006A395E /* NoteCreationView.swift in Sources */,
 				6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */,
 				6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */,
-				6EA5D75325EAD87B009E00A6 /* CreationView.swift in Sources */,
 				6E7F031625F0135D00A3822C /* CardDetailsView.swift in Sources */,
 				6E21C0D425F2E831006A395E /* PasswordView.swift in Sources */,
 				6EA4999A25F00B83006D7FC6 /* DetailsViewModel.swift in Sources */,
 				6E9AB55A25E7D95400DC88FF /* PassMasterApp.swift in Sources */,
+				6E21C0D825F51AE6006A395E /* PasswordCreationView.swift in Sources */,
 				6E21C0CE25F2E625006A395E /* NoteView.swift in Sources */,
 				6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */,
 			);

@@ -34,7 +34,16 @@ struct SelectionView: View {
                                             self.canShowCreationView.toggle()}) {
                                     Label("Add", systemImage: "plus.circle")
                                 }).sheet(isPresented: $canShowCreationView) {
-                                    CreationView()
+                                    switch selectedAccount {
+                                    case .Password:
+                                        PasswordCreationView()
+                                        
+                                    case .Card:
+                                        CardCreationView()
+                                        
+                                    case .Note:
+                                        NoteCreationView()
+                                    }
                                 }
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
