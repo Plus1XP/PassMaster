@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardCreationView: View {
     
-    @EnvironmentObject private var model: AccountProcessor
+    @EnvironmentObject var model: AccountProcessor
     @Environment(\.presentationMode) var presentationMode
     
     @State private var name = ""
@@ -34,12 +34,12 @@ struct CardCreationView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
+                        presentationMode.wrappedValue.dismiss() }) {
                         Label("Disgard", systemImage: "trash")
                     },
                 trailing:
                     Button(action: {
-                        model.AddCard(name: name, number: number, start: start, end: end, cvv: cvv, notes: notes)
+                        self.model.AddCard(name: name, number: number, start: start, end: end, cvv: cvv, notes: notes)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Label("Save", systemImage: "sdcard")

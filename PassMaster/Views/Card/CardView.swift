@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    @EnvironmentObject private var model: AccountProcessor
+    @EnvironmentObject var model: AccountProcessor
 
     @State private var selectedCard: CardModel = CardModel(id: 0, AccountType: AccountType.Card, name: "Example", number: 4090123456789090, start: "1 JAN", end: "31 DEC", cvv: 321, note: "Petty Cash")
     
@@ -18,7 +18,7 @@ struct CardView: View {
     var body: some View {
         Form{
             Section(header: Text("Cards")){
-                List(model.Cards, id: \.self) { selectedCard in
+                List(self.model.Cards, id: \.self) { selectedCard in
                     Button(
                         action: {
                             self.selectedCard = selectedCard
