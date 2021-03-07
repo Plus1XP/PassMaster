@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SelectionView: View {
     
-    @StateObject private var model = AccountProcessor()
+    @StateObject var model = AccountProcessor()
     
     @State private var selectedAccount: AccountType = .Password
     
@@ -61,7 +61,7 @@ struct SelectionView: View {
 
                 }
             }
-        }.environmentObject(AccountProcessor())
+        }.environmentObject(model)
     }
 }
 
