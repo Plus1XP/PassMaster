@@ -26,7 +26,7 @@ struct NoteView: View {
                         },
                         label: {
                             HStack {
-                                Text("N")
+                                Text(String(selectedNote.id))
                                     .frame(width: 50, height: 50)
                                     .background(Color.white)
                                     .cornerRadius(10)

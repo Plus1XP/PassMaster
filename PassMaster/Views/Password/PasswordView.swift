@@ -26,7 +26,7 @@ struct PasswordView: View {
                         },
                         label: {
                             HStack {
-                                Text("L")
+                                Text(String(selectedLogin.id))
                                     .frame(width: 50, height: 50)
                                     .background(Color.white)
                                     .cornerRadius(10)

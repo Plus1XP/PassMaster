@@ -15,6 +15,8 @@ struct CardDetailsView: View {
     
     @Binding var selection: CardModel
     
+    @State private var canShowEditView = false
+    
     @State private var isShowingAlert = false
     
     var body: some View {
@@ -68,9 +70,13 @@ struct CardDetailsView: View {
                         Label("Dismiss", systemImage: "trash")
                 },
                 trailing:
-                    Button(action: {}) {
-                    Label("Edit", systemImage: "pencil")
-                })
+                    Button(action: {
+                            self.canShowEditView.toggle() }) {
+                        Label("Edit", systemImage: "pencil")
+                            .sheet(isPresented: $canShowEditView) {
+                                CardEditView(selection: $selection)
+                            }
+                    })
         }
     }
 }

@@ -15,6 +15,8 @@ struct PasswordDetailsView: View {
     
     @Binding var selection: PasswordModel
     
+    @State private var canShowEditView = false
+    
     @State private var isShowingAlert = false
     
     var body: some View {
@@ -64,16 +66,20 @@ struct PasswordDetailsView: View {
                 }
                 
             }.navigationBarTitle(Text(selection.name))
-             .navigationBarItems(
+            .navigationBarItems(
                 leading:
                     Button(action: {
                             presentationMode.wrappedValue.dismiss() }) {
-                    Label("Dismiss", systemImage: "trash")
+                        Label("Dismiss", systemImage: "trash")
                 },
                 trailing:
-                    Button(action: {}) {
-                    Label("Edit", systemImage: "pencil")
-                })
+                    Button(action: {
+                            self.canShowEditView.toggle() }) {
+                        Label("Edit", systemImage: "pencil")
+                            .sheet(isPresented: $canShowEditView) {
+                                PasswordEditView(selection: $selection)
+                            }
+                    })
         }
     }
 }

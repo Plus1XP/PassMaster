@@ -15,6 +15,8 @@ struct NoteDetailsView: View {
     
     @Binding var selection: NoteModel
     
+    @State private var canShowEditView = false
+    
     @State private var isShowingAlert = false
     
     var body: some View {
@@ -61,9 +63,13 @@ struct NoteDetailsView: View {
                         Label("Dismiss", systemImage: "trash")
                 },
                 trailing:
-                    Button(action: {}) {
-                    Label("Edit", systemImage: "pencil")
-                })
+                    Button(action: {
+                            self.canShowEditView.toggle() }) {
+                        Label("Edit", systemImage: "pencil")
+                            .sheet(isPresented: $canShowEditView) {
+                                NoteEditView(selection: $selection)
+                            }
+                    })
         }
     }
 }
