@@ -41,18 +41,17 @@ class AccountProcessor : ObservableObject{
         let id = GetNewPasswordId()
         let accountType = AccountType.Password
         
-        let account: [PasswordModel] = [PasswordModel(
-                                            id: id,
-                                            AccountType: accountType,
-                                            name: name,
-                                            userName: userName,
-                                            password: password,
-                                            memorable: memorable,
-                                            accountNo: AccountNo,
-                                            uRL: uRL,
-                                            notes: notes)]
-        
-        Passwords.append(contentsOf: account)
+        let account = PasswordModel(
+                                    id: id,
+                                    AccountType: accountType,
+                                    name: name,
+                                    userName: userName,
+                                    password: password,
+                                    memorable: memorable,
+                                    accountNo: AccountNo,
+                                    uRL: uRL,
+                                    notes: notes)
+        Passwords.append(account)
     }
     
     func AddCard(name: String, number: String, start: String?, end: String, cvv: String, notes: String?) -> Void{
@@ -98,6 +97,60 @@ class AccountProcessor : ObservableObject{
         }
     }
     
+    func EditPassword(id: Int, name: String, userName: String, password: String, memorable: String?, AccountNo: String?, uRL: String?, notes: String?) -> Void{
+
+        let index = Passwords.firstIndex(where: {$0.id == id})
+
+        let accountType = AccountType.Password
+        
+        let account = PasswordModel(
+                                id: id,
+                                AccountType: accountType,
+                                name: name,
+                                userName: userName,
+                                password: password,
+                                memorable: memorable,
+                                accountNo: AccountNo,
+                                uRL: uRL,
+                                notes: notes)
+        
+        Passwords[index ?? 0] = account
+    }
+    
+    func EditCard(id: Int, name: String, number: Int, start: String?, end: String, cvv: Int, notes: String?) -> Void{
+        
+        let index = Cards.firstIndex(where: {$0.id == id})
+        
+        let accountType = AccountType.Card
+        
+        let account = CardModel(
+                            id: id,
+                            AccountType: accountType,
+                            name: name,
+                            number: number,
+                            start: start,
+                            end: end,
+                            cvv: number,
+                            note: notes)
+        
+        Cards[index ?? 0] = account
+    }
+    
+    func EditNote(id: Int, title: String, body: String) -> Void{
+        
+        let index = Notes.firstIndex(where: {$0.id == id})
+
+        let accountType = AccountType.Note
+        
+        let account = NoteModel(
+                            id: id,
+                            AccountType: accountType,
+                            title: title,
+                            body: body)
+        
+        Notes[index ?? 0] = account
+    }
+    
     /*
     func FindAccount(name : String) -> AccountModel{
         
@@ -113,19 +166,23 @@ class AccountProcessor : ObservableObject{
     
     func GetNewPasswordId() -> Int {
         
-        //return accounts.count + 1
-        return Passwords.last?.id ?? 0 + 1
+        var total: Int = 0
+        let current: Int = Passwords.last?.id ?? 0
+        total = current + 1
+        print("Current items:", current)
+        print("Total items:", total)
+        return total
     }
     
     func GetNewCardId() -> Int {
         
-        //return accounts.count + 1
-        return Cards.last?.id ?? 0 + 1
+        return (Cards.last?.id ?? 0) + 1
     }
     
     func GetNewNoteId() -> Int {
-        
-        //return accounts.count + 1
-        return Notes.last?.id ?? 0 + 1
+
+        let current: Int = Notes.last?.id ?? 0
+        print("Current items:", current)
+        return current + 1
     }
 }
