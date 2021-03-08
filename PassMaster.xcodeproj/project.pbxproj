@@ -14,6 +14,10 @@
 		6E21C0D825F51AE6006A395E /* PasswordCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0D725F51AE6006A395E /* PasswordCreationView.swift */; };
 		6E21C0DF25F51C5E006A395E /* NoteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */; };
 		6E21C0E225F51C70006A395E /* CardCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0E125F51C70006A395E /* CardCreationView.swift */; };
+		6E21C0E525F53551006A395E /* PasswordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0E425F53551006A395E /* PasswordEditView.swift */; };
+		6E40BCE625F54F700023F4DF /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E40BCE525F54F700023F4DF /* Binding.swift */; };
+		6E40BCE925F5662B0023F4DF /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E40BCE825F5662B0023F4DF /* CardEditView.swift */; };
+		6E40BCEC25F566360023F4DF /* NoteEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E40BCEB25F566360023F4DF /* NoteEditView.swift */; };
 		6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840825EFEE67000C5B38 /* NoteModel.swift */; };
 		6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E66840B25EFF0A7000C5B38 /* CardModel.swift */; };
 		6E7F031625F0135D00A3822C /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F031525F0135D00A3822C /* CardDetailsView.swift */; };
@@ -37,6 +41,10 @@
 		6E21C0D725F51AE6006A395E /* PasswordCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreationView.swift; sourceTree = "<group>"; };
 		6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCreationView.swift; sourceTree = "<group>"; };
 		6E21C0E125F51C70006A395E /* CardCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationView.swift; sourceTree = "<group>"; };
+		6E21C0E425F53551006A395E /* PasswordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditView.swift; sourceTree = "<group>"; };
+		6E40BCE525F54F700023F4DF /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		6E40BCE825F5662B0023F4DF /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
+		6E40BCEB25F566360023F4DF /* NoteEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditView.swift; sourceTree = "<group>"; };
 		6E66840825EFEE67000C5B38 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		6E66840B25EFF0A7000C5B38 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		6E7F031525F0135D00A3822C /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
@@ -68,9 +76,10 @@
 		6E21C0D625F51A84006A395E /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				6E21C0D325F2E831006A395E /* PasswordView.swift */,
-				6EF1480F25EAA183005A21F8 /* PasswordDetailsView.swift */,
 				6E21C0D725F51AE6006A395E /* PasswordCreationView.swift */,
+				6EF1480F25EAA183005A21F8 /* PasswordDetailsView.swift */,
+				6E21C0E425F53551006A395E /* PasswordEditView.swift */,
+				6E21C0D325F2E831006A395E /* PasswordView.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -78,9 +87,10 @@
 		6E21C0DB25F51C19006A395E /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				6E7F031525F0135D00A3822C /* CardDetailsView.swift */,
-				6E21C0D025F2E81B006A395E /* CardView.swift */,
 				6E21C0E125F51C70006A395E /* CardCreationView.swift */,
+				6E7F031525F0135D00A3822C /* CardDetailsView.swift */,
+				6E40BCE825F5662B0023F4DF /* CardEditView.swift */,
+				6E21C0D025F2E81B006A395E /* CardView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -88,16 +98,26 @@
 		6E21C0DC25F51C21006A395E /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				6ED00F6825F027B500892340 /* NoteDetailsView.swift */,
-				6E21C0CD25F2E625006A395E /* NoteView.swift */,
 				6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */,
+				6ED00F6825F027B500892340 /* NoteDetailsView.swift */,
+				6E40BCEB25F566360023F4DF /* NoteEditView.swift */,
+				6E21C0CD25F2E625006A395E /* NoteView.swift */,
 			);
 			path = Note;
+			sourceTree = "<group>";
+		};
+		6E40BCE425F54DB50023F4DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E40BCE525F54F700023F4DF /* Binding.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6E9AB54D25E7D95400DC88FF = {
 			isa = PBXGroup;
 			children = (
+				6E40BCE425F54DB50023F4DF /* Extensions */,
 				6E9AB55825E7D95400DC88FF /* PassMaster */,
 				6E9AB55725E7D95400DC88FF /* Products */,
 			);
@@ -138,10 +158,10 @@
 		6EF147E825E7F830005A21F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */,
-				6E66840825EFEE67000C5B38 /* NoteModel.swift */,
-				6E66840B25EFF0A7000C5B38 /* CardModel.swift */,
 				6E21C0CA25F2C706006A395E /* AccountType.swift */,
+				6E66840B25EFF0A7000C5B38 /* CardModel.swift */,
+				6E66840825EFEE67000C5B38 /* NoteModel.swift */,
+				6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E40BCEC25F566360023F4DF /* NoteEditView.swift in Sources */,
 				6E9AB55C25E7D95400DC88FF /* ContentView.swift in Sources */,
 				6E66840925EFEE67000C5B38 /* NoteModel.swift in Sources */,
 				6EF1481025EAA183005A21F8 /* PasswordDetailsView.swift in Sources */,
@@ -250,16 +271,19 @@
 				6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */,
 				6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */,
 				6E21C0E225F51C70006A395E /* CardCreationView.swift in Sources */,
+				6E40BCE925F5662B0023F4DF /* CardEditView.swift in Sources */,
 				6E21C0DF25F51C5E006A395E /* NoteCreationView.swift in Sources */,
 				6EF147F025E81F9A005A21F8 /* AccountProcessor.swift in Sources */,
 				6E66840C25EFF0A7000C5B38 /* CardModel.swift in Sources */,
 				6E7F031625F0135D00A3822C /* CardDetailsView.swift in Sources */,
 				6E21C0D425F2E831006A395E /* PasswordView.swift in Sources */,
 				6EA4999A25F00B83006D7FC6 /* DetailsViewModel.swift in Sources */,
+				6E21C0E525F53551006A395E /* PasswordEditView.swift in Sources */,
 				6E9AB55A25E7D95400DC88FF /* PassMasterApp.swift in Sources */,
 				6E21C0D825F51AE6006A395E /* PasswordCreationView.swift in Sources */,
 				6E21C0CE25F2E625006A395E /* NoteView.swift in Sources */,
 				6EA5D75025EABB33009E00A6 /* SelectionView.swift in Sources */,
+				6E40BCE625F54F700023F4DF /* Binding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
