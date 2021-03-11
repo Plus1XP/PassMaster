@@ -14,6 +14,8 @@ struct CardEditView: View {
     
     @Binding var selection: CardModel
     
+    @State var isShowingAlert = false
+    
     var body: some View {
         NavigationView {
             Form{
@@ -24,6 +26,25 @@ struct CardEditView: View {
                     TextField("Expiry Date", text: $selection.end)
                     TextField("CVV", value: $selection.cvv, formatter: NumberFormatter()).keyboardType(.numberPad)
                     TextField("Notes", text: $selection.note.bound)
+                }.foregroundColor(Color.white)
+                
+                Section() {
+                    Button("Delete Account") {
+                        self.isShowingAlert = true
+                    }.frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        alignment: .center)
+                    .alert(isPresented: $isShowingAlert) {
+                        Alert(
+                            title: Text("Delete \(selection.name)"),
+                            message: Text("Confirm \(selection.name) removal"),
+                            primaryButton: .destructive(Text("Delete")) {
+                                model.RemoveCard(id: selection.id)
+                                presentationMode.wrappedValue.dismiss()
+                            },
+                            secondaryButton: .cancel())
+                    }
                 }
             }.navigationBarTitle(Text(selection.name))
             .navigationBarItems(
