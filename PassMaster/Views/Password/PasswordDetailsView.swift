@@ -71,6 +71,22 @@ struct PasswordDetailsView: View {
                     Button(action: {
                             presentationMode.wrappedValue.dismiss() }) {
                         Label("Dismiss", systemImage: "trash")
+//                    Button("Delete Account") {
+//                        self.isShowingAlert = true
+//                    }.frame(
+//                        minWidth: 0,
+//                        maxWidth: .infinity,
+//                        alignment: .center)
+//                    .alert(isPresented: $isShowingAlert) {
+//                        Alert(
+//                            title: Text("Delete \(selection.name)"),
+//                            message: Text("Confirm \(selection.name) removal"),
+//                            primaryButton: .destructive(Text("Delete")) {
+//                                NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "AccountRemoved")))
+//                                model.RemovePassword(id: selection.id)
+//                                presentationMode.wrappedValue.dismiss()
+//                            },
+//                            secondaryButton: .cancel())
                 },
                 trailing:
                     Button(action: {
