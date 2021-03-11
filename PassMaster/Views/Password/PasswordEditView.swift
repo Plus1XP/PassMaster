@@ -14,6 +14,8 @@ struct PasswordEditView: View {
     
     @Binding var selection: PasswordModel
     
+    @State var isShowingAlert = false
+    
     var body: some View {
         NavigationView {
             Form{
@@ -25,18 +27,39 @@ struct PasswordEditView: View {
                     TextField("Account No.", text: $selection.accountNo.bound)
                     TextField("URL", text: $selection.uRL.bound).keyboardType(.URL)
                     TextField("Notes", text: $selection.notes.bound)
+                }.foregroundColor(Color.white)
+                
+                Section() {
+                    Button("Delete Account") {
+                        //model.RemovePassword(id: selection.id)
+                        self.isShowingAlert = true
+                    }.frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        alignment: .center)
+                    .alert(isPresented: $isShowingAlert) {
+                        Alert(
+                            title: Text("Delete \(selection.name)"),
+                            message: Text("Confirm \(selection.name) removal"),
+                            primaryButton: .destructive(Text("Delete")) {
+                                model.RemovePassword(id: selection.id)
+                                presentationMode.wrappedValue.dismiss()
+                            },
+                            secondaryButton: .cancel())
+                    }
                 }
             }.navigationBarTitle(Text(selection.name))
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
+                            presentationMode.wrappedValue.dismiss()
+                    }) {
                         Label("Disgard", systemImage: "trash")
                     },
                 trailing:
                     Button(action: {
                         self.model.EditPassword(id: selection.id, name: selection.name, userName: selection.userName, password: selection.password, memorable: selection.memorable, AccountNo: selection.accountNo, uRL: selection.uRL, notes: selection.notes)
-
+                        
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Label("Save", systemImage: "sdcard")
