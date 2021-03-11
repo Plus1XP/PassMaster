@@ -14,12 +14,34 @@ struct NoteEditView: View {
     
     @Binding var selection: NoteModel
     
+    @State var isShowingAlert = false
+    
     var body: some View {
         NavigationView {
             Form{
                 Section(header: Text("Edit Account Information")) {
                     TextField("Title", text: $selection.title)
                     TextField("Body", text: $selection.body)
+                }.foregroundColor(Color.white)
+                
+                Section() {
+                    Button("Delete Account") {
+                        //model.RemovePassword(id: selection.id)
+                        self.isShowingAlert = true
+                    }.frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        alignment: .center)
+                    .alert(isPresented: $isShowingAlert) {
+                        Alert(
+                            title: Text("Delete \(selection.title)"),
+                            message: Text("Confirm \(selection.title) removal"),
+                            primaryButton: .destructive(Text("Delete")) {
+                                model.RemoveNote(id: selection.id)
+                                presentationMode.wrappedValue.dismiss()
+                            },
+                            secondaryButton: .cancel())
+                    }
                 }
             }.navigationBarTitle(Text(selection.title))
             .navigationBarItems(
