@@ -97,6 +97,27 @@ class AccountProcessor : ObservableObject{
         }
     }
     
+    func RemovePassword(id: Int) {
+        
+        let index = Passwords.firstIndex(where: {$0.id == id}) ?? 0
+        print("Index:", index)
+        Passwords.remove(at: index)
+    }
+    
+    func RemoveCard(id: Int) {
+        
+        let index = Cards.firstIndex(where: {$0.id == id}) ?? 0
+        
+        Cards.remove(at: index)
+    }
+    
+    func RemoveNote(id: Int) {
+        
+        let index = Notes.firstIndex(where: {$0.id == id}) ?? 0
+        
+        Notes.remove(at: index)
+    }
+    
     func EditPassword(id: Int, name: String, userName: String, password: String, memorable: String?, AccountNo: String?, uRL: String?, notes: String?) -> Void{
 
         let index = Passwords.firstIndex(where: {$0.id == id})
