@@ -17,6 +17,9 @@ struct CardModel: Hashable {
     var cvv: Int
     var note: String?
     
+    static let `mock` = Self(id: 0, AccountType: .Card, name: "example", number: 5105105105105100, start: "JAN 21", end: "DEC 24", cvv: 123, note: "Petty Cash")
+    static let `empty` = Self(id: 0, AccountType: .Card, name: "", number: 0, start: "", end: "", cvv: 0, note: "")
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(AccountType)
