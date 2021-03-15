@@ -10,13 +10,16 @@ import Foundation
 struct NoteModel: Hashable {
     var id: Int
     var AccountType: AccountType
-    var title: String
-    var body: String
+    var name: String
+    var note: String
+    
+    static let `mock` = Self(id: 0, AccountType: .Note, name: "example", note: "Secret Note!")
+    static let `empty` = Self(id: 0, AccountType: .Note, name: "", note: "")
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(AccountType)
-        hasher.combine(title)
-        hasher.combine(body)
+        hasher.combine(name)
+        hasher.combine(note)
     }
 }
