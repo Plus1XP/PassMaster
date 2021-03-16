@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AccountProcessor : ObservableObject{
+class AccountStore : ObservableObject{
     
     @Published var Passwords: [PasswordModel]
     @Published var Cards: [CardModel]
@@ -16,24 +16,34 @@ class AccountProcessor : ObservableObject{
     @Published var Accounts: [AccountType] = [AccountType.Password, AccountType.Card, AccountType.Note]
     
     init() {
-        self.Passwords = [ PasswordModel(id: 1, AccountType: AccountType.Password, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", notes: "Food is nice"),
+        self.Passwords = [ PasswordModel(id: 1, AccountType: AccountType.Password, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", note: "Food is nice"),
                      PasswordModel(id: 2, AccountType: AccountType.Password, name: "John Lewis", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.johnlewis.com"),
-                     PasswordModel(id: 3, AccountType: AccountType.Password, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", notes: "Just happy to be here")]
+                     PasswordModel(id: 3, AccountType: AccountType.Password, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", note: "Just happy to be here")]
         
         self.Cards = [CardModel(id: 1, AccountType: AccountType.Card, name: "Visa", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
                        CardModel(id: 2, AccountType: AccountType.Card, name: "Mastercard", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
                        CardModel(id: 3, AccountType: AccountType.Card, name: "AMEX", number: 5555123456789900, end: "Dec 22", cvv: 313)]
         
-        self.Notes = [NoteModel(id: 1, AccountType: AccountType.Note, title: "Card Pins", body: "Visa - 1234"),
-                      NoteModel(id: 2, AccountType: AccountType.Note, title: "Todo", body: "Go Gym!"),
-                      NoteModel(id: 3, AccountType: AccountType.Note, title: "Call Doctor", body: "Tell him about PAIN")]
+        self.Notes = [NoteModel(id: 1, AccountType: AccountType.Note, name: "Card Pins", note: "Visa - 1234"),
+                      NoteModel(id: 2, AccountType: AccountType.Note, name: "Todo", note: "Go Gym!"),
+                      NoteModel(id: 3, AccountType: AccountType.Note, name: "Call Doctor", note: "Tell him about PAIN")]
     }
     
-    var accounts = [PasswordModel]()
+//    var accounts = [PasswordModel]()
+//
+//    func AddAccount(account : PasswordModel) -> Void{
+//
+//        accounts.append(account)
+//    }
     
-    func AddAccount(account : PasswordModel) -> Void{
+    func AddPassword(account : PasswordModel) -> Void{
         
-        accounts.append(account)
+        var password: PasswordModel
+        password = account
+        password.id = GetNewPasswordId()
+        password.AccountType = .Password
+        
+        Passwords.append(password)
     }
     
     func AddPassword(name: String, userName: String, password: String, memorable: String?, AccountNo: String?, uRL: String?, notes: String?) -> Void{
@@ -50,8 +60,18 @@ class AccountProcessor : ObservableObject{
                                     memorable: memorable,
                                     accountNo: AccountNo,
                                     uRL: uRL,
-                                    notes: notes)
+                                    note: notes)
         Passwords.append(account)
+    }
+    
+    func AddCard(account: CardModel) -> Void {
+        
+        var card : CardModel
+        card = account
+        card.id = GetNewCardId()
+        card.AccountType = .Card
+        
+        Cards.append(card)
     }
     
     func AddCard(name: String, number: String, start: String?, end: String, cvv: String, notes: String?) -> Void{
@@ -72,6 +92,16 @@ class AccountProcessor : ObservableObject{
         Cards.append(contentsOf: account)
     }
     
+    func AddNote(account: NoteModel) -> Void {
+        
+        var note: NoteModel
+        note = account
+        note.id = GetNewNoteId()
+        note.AccountType = .Note
+        
+        Notes.append(note)
+    }
+    
     func AddNote(title: String, body: String) -> Void{
         
         let id = GetNewNoteId()
@@ -80,22 +110,22 @@ class AccountProcessor : ObservableObject{
         let account: [NoteModel] = [NoteModel(
                                             id: id,
                                             AccountType: accountType,
-                                            title: title,
-                                            body: body)]
+                                            name: title,
+                                            note: body)]
         
         Notes.append(contentsOf: account)
     }
     
-    func RemoveAccount(account : PasswordModel) -> Void {
-        
-        for item in accounts {
-            var count = 0
-            if item.id == account.id {
-                accounts.remove(at: count)
-            }
-            count += 1
-        }
-    }
+//    func RemoveAccount(account : PasswordModel) -> Void {
+//        
+//        for item in accounts {
+//            var count = 0
+//            if item.id == account.id {
+//                accounts.remove(at: count)
+//            }
+//            count += 1
+//        }
+//    }
     
     func RemovePassword(id: Int) {
         
@@ -133,7 +163,7 @@ class AccountProcessor : ObservableObject{
                                 memorable: memorable,
                                 accountNo: AccountNo,
                                 uRL: uRL,
-                                notes: notes)
+                                note: notes)
         
         Passwords[index ?? 0] = account
     }
@@ -166,10 +196,33 @@ class AccountProcessor : ObservableObject{
         let account = NoteModel(
                             id: id,
                             AccountType: accountType,
-                            title: title,
-                            body: body)
+                            name: title,
+                            note: body)
         
         Notes[index ?? 0] = account
+    }
+    
+    func RestorePassword(account : PasswordModel) -> Void{
+        
+        Passwords.append(account)
+        //Passwords = Passwords.sorted(by: { $0.id > $1.id })
+        Passwords = Passwords.sorted(by: { (first: PasswordModel, second: PasswordModel) -> Bool in
+            first.id < second.id
+        })
+    }
+    
+    func RestoreCard(account: CardModel) -> Void {
+        Cards.append(account)
+        Cards = Cards.sorted(by: {( first: CardModel, second: CardModel) -> Bool in
+            first.id < second.id
+        })
+    }
+    
+    func RestoreNote(account: NoteModel) -> Void {
+        Notes.append(account)
+        Notes = Notes.sorted(by: {( first:NoteModel, second: NoteModel) -> Bool in
+            first.id < second.id
+        })
     }
     
     /*
@@ -179,11 +232,11 @@ class AccountProcessor : ObservableObject{
     }
     */
     
-    func GetNewAccountId() -> Int {
-        
-        //return accounts.count + 1
-        return accounts.last?.id ?? 0 + 1
-    }
+//    func GetNewAccountId() -> Int {
+//        
+//        //return accounts.count + 1
+//        return accounts.last?.id ?? 0 + 1
+//    }
     
     func GetNewPasswordId() -> Int {
         
