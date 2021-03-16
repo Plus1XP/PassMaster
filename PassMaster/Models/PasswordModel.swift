@@ -16,7 +16,24 @@ struct PasswordModel: Identifiable, Hashable {
     var memorable: String?
     var accountNo: String?
     var uRL : String?
-    var notes : String?
+    var note : String?
+    
+    static let `mock` = Self(id: 0, AccountType: .Password, name: "example", userName: "example@example.com", password: "password123", memorable: "Rover",
+                             accountNo: "EX12345", uRL: "www.example.com", note: "Work Account")    
+    static let `empty` = Self(id: 0, AccountType: .Password, name: "", userName: "", password: "", memorable: "", accountNo: "", uRL: "", note: "")
+    
+//    init() {
+//
+//    }
+//
+//    init(userName: String, password: String, memorable: String?, accountNo: String?, uRL: String?, notes: String?) {
+//        self.name = userName
+//        self.password = password
+//        self.memorable = memorable
+//        self.accountNo = accountNo
+//        self.uRL = uRL
+//        self.notes = notes
+//    }
     
     //let accounts = [AccountModel]()
     
@@ -36,7 +53,7 @@ struct PasswordModel: Identifiable, Hashable {
         hasher.combine(userName)
         hasher.combine(password)
         hasher.combine(uRL)
-        hasher.combine(notes)
+        hasher.combine(note)
     }
     
     /*
