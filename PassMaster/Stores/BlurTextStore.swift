@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-class DetailsViewModel: ObservableObject {
+class BlurTextStore: ObservableObject {
     
     @Published var isBlurred = true
     
