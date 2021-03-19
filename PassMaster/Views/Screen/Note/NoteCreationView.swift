@@ -8,33 +8,28 @@
 import SwiftUI
 
 struct NoteCreationView: View {
-    
-    @EnvironmentObject var model: AccountProcessor
     @Environment(\.presentationMode) var presentationMode
-    
-    @State private var title = ""
-    @State private var noteBody = ""
+    @EnvironmentObject var model: AccountStore
+    @State private var note: NoteModel = NoteModel.empty
     
     var body: some View {
         NavigationView {
             Form{
-                Section(header: Text("Enter New Account Information")) {
-                    TextField("Title", text: $title)
-                    TextField("Body", text: $noteBody)
-                }
-            }.navigationBarTitle(Text(title))
+                NoteEditForm(account: $note)
+            }.navigationBarTitle(Text(note.name))
             .navigationBarItems(
                 leading:
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss() }) {
-                        Label("Disgard", systemImage: "trash")
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        DismissButton()
                     },
                 trailing:
                     Button(action: {
-                        self.model.AddNote(title: title, body: noteBody)
+                        self.model.AddNote(account: note)
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        Label("Save", systemImage: "sdcard")
+                        SaveButton()
                     })
         }
     }
@@ -43,6 +38,6 @@ struct NoteCreationView: View {
 struct NoteCreationView_Previews: PreviewProvider {
     static var previews: some View {
         NoteCreationView()
-            .environmentObject(AccountProcessor())
+            .environmentObject(AccountStore())
     }
 }
