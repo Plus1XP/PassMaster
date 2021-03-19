@@ -17,7 +17,7 @@ struct ContentView: View {
         }, label: {
             Text("Login")
         }).fullScreenCover(isPresented: self.$canShowSelectionView) {
-            SelectionView()
+            HomeView()
         }
     }
 }
