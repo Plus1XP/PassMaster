@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct NoteView: View {
-    
     @EnvironmentObject var model: AccountStore
-
     @State private var selectedNote: NoteModel = NoteModel.mock
-    
     @State private var canShowDetailsView = false
     
     var body: some View {

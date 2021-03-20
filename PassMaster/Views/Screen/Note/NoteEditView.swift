@@ -27,12 +27,13 @@ struct NoteEditView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
+                            presentationMode.wrappedValue.dismiss()
+                    }) {
                         DismissButton()
                     },
                 trailing:
                     Button(action: {
-                        self.model.EditNote(id: selection.id, title: selection.name, body: selection.note)
+                        self.model.EditNote(modified: selection)
                         
                         presentationMode.wrappedValue.dismiss()
                     }) {

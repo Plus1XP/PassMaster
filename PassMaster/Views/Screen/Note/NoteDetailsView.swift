@@ -20,7 +20,7 @@ struct NoteDetailsView: View {
     var body: some View {
         NavigationView {
             Form{
-                NoteDetailsForm(selection: selection)
+                NoteDetailsForm(selection: $selection)
                 
                 if !canShowRecoverButton {
                     CopyButton(isShowingCopyAlert: $isShowingCopyAlert, accountName: selection.name, accountSecret: selection.note, itemName: itemName)
