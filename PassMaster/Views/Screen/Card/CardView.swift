@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
-    
     @EnvironmentObject var model: AccountStore
-
     @State private var selectedCard: CardModel = CardModel.mock
-    
     @State private var canShowDetailsView = false
     
     var body: some View {

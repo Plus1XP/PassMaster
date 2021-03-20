@@ -33,8 +33,7 @@ struct CardEditView: View {
                     },
                 trailing:
                     Button(action: {
-                        self.model.EditCard(id: selection.id, name: selection.name, number: selection.number, start: selection.start, end: selection.end, cvv: selection.cvv, notes: selection.note)
-                        
+                        self.model.EditCard(modified: selection)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         SaveButton()

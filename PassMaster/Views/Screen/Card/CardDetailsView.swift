@@ -21,7 +21,7 @@ struct CardDetailsView: View {
     var body: some View {
         NavigationView {
             Form{
-                CardDetailsForm(selection: selection)
+                CardDetailsForm(selection: $selection)
                 
                 if !canShowRecoverButton {
                     CopyButton(isShowingCopyAlert: $isShowingCopyAlert, accountName: selection.name, accountSecret: selection.number.description, itemName: itemName)
