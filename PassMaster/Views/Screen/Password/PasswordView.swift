@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct PasswordView: View {
-    
     @EnvironmentObject var model: AccountStore
-    
     @State private var selectedLogin: PasswordModel = PasswordModel.mock
-    
     @State private var canShowDetailsView = false
     
     var body: some View {
