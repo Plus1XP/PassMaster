@@ -22,4 +22,12 @@ struct NoteModel: Hashable {
         hasher.combine(name)
         hasher.combine(note)
     }
+    
+    func equals(_ CompareTo: NoteModel) -> Bool {
+        return
+            self.id == CompareTo.id &&
+            self.AccountType == CompareTo.AccountType &&
+            self.name == CompareTo.name &&
+            self.note == CompareTo.note
+    }
 }
