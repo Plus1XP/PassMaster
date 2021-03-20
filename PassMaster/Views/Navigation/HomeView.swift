@@ -19,11 +19,13 @@ struct HomeView: View {
             }.navigationBarTitle(Text("PassMaster"))
             .navigationBarItems(trailing:
                                     Button(action: {
-                                            self.canShowCreationView.toggle()}) {
+                                        self.canShowCreationView.toggle()
+                                    }) {
                                         Label("Add", systemImage: "plus.circle")
-                                    }).sheet(isPresented: $canShowCreationView) {
-                                        CreateAccountSwitch(selectedAccount: $selectedAccount)
-                                    }
+                                    })
+            .sheet(isPresented: $canShowCreationView) {
+                CreateAccountSwitch(selectedAccount: $selectedAccount)
+            }
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     HomeTab(selectedAccount: $selectedAccount)
