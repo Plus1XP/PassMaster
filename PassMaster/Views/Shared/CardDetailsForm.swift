@@ -9,11 +9,10 @@ import SwiftUI
 
 struct CardDetailsForm: View {
     @StateObject private var model = BlurTextStore()
-    @State var selection: CardModel
+    @Binding var selection: CardModel
     
     var body: some View {
         Section(header: Text("Card Information")) {
-            Text(selection.name)
             Text(String(selection.number))
             HStack {
                 Text(String(selection.cvv))
@@ -33,7 +32,7 @@ struct CardDetailsForm: View {
 
 struct CardDetailsForm_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailsForm(selection: CardModel.mock)
+        CardDetailsForm(selection: .constant(CardModel.mock))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -9,15 +9,15 @@ import SwiftUI
 
 struct CardEditForm: View {
     @Binding var account: CardModel
-    
+
     var body: some View {
         Section(header: Text("Edit Card Information")) {
             Group {
                 TextField("Account Name", text: $account.name)
-                TextField("Card Number", value: $account.number, formatter: NumberFormatter()).keyboardType(.numberPad)
+                TextField("Card Number", text: $account.number).keyboardType(.numberPad)
                 TextField("Start Date", text: $account.start.bound)
                 TextField("Expiry Date", text: $account.end)
-                TextField("CVV", value: $account.cvv, formatter: NumberFormatter()).keyboardType(.numberPad)
+                TextField("CVV", text: $account.cvv).keyboardType(.numberPad)
             }
             .modifier(FormGroupStyle())
         }

@@ -9,11 +9,10 @@ import SwiftUI
 
 struct PasswordDetailsForm: View {
     @StateObject private var model = BlurTextStore()
-    @State var selection: PasswordModel
+    @Binding var selection: PasswordModel
     
     var body: some View {
         Section(header: Text("Login Information")) {
-            //Text(selection.name)
             Text(selection.userName)
             HStack {
                 Text(selection.password)
@@ -34,7 +33,7 @@ struct PasswordDetailsForm: View {
 
 struct PasswordDetailerView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordDetailsForm(selection: PasswordModel.mock)
+        PasswordDetailsForm(selection: .constant(PasswordModel.mock))
             .previewLayout(.sizeThatFits)
     }
 }

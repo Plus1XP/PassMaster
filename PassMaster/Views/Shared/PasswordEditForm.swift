@@ -31,18 +31,6 @@ struct PasswordEditForm: View {
             .modifier(FormGroupStyle())
         }
         .modifier(FormSectionStyle())
-        
-//        Form{
-//            Section(header: Text("Enter New Account Information")) {
-//                TextField("Account Name", text: $account.name)
-//                TextField("Username", text: $account.userName).keyboardType(.emailAddress)
-//                TextField("Password", text: $account.password)
-//                TextField("Memorable Answer", text: $account.memorable.bound)
-//                TextField("Account No.", text: $account.accountNo.bound)
-//                TextField("URL", text: $account.uRL.bound).keyboardType(.URL)
-//                TextField("Notes", text: $account.notes.bound)
-//            }
-//        }
     }
 }
 

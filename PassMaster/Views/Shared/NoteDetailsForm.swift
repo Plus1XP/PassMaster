@@ -9,13 +9,9 @@ import SwiftUI
 
 struct NoteDetailsForm: View {
     @StateObject private var model = BlurTextStore()
-    @State var selection: NoteModel
+    @Binding var selection: NoteModel
     
     var body: some View {
-        Section(header: Text("Note Title")) {
-            Text(selection.name)
-        }
-        
         Section(header: Text("Note")) {
             HStack {
                 TextEditor(text: $selection.note).disabled(true)
@@ -28,7 +24,7 @@ struct NoteDetailsForm: View {
 
 struct NotesDetailsForm_Previews: PreviewProvider {
     static var previews: some View {
-        NoteDetailsForm(selection: NoteModel.mock)
+        NoteDetailsForm(selection: .constant(NoteModel.mock))
             .previewLayout(.sizeThatFits)
     }
 }

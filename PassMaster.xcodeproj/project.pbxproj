@@ -155,13 +155,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		6E57243126010C08001256EF /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		6E9AB54D25E7D95400DC88FF = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				6E9AB55D25E7D95700DC88FF /* Assets.xcassets */,
-				6E57243126010C08001256EF /* Components */,
 				6E9AB55B25E7D95400DC88FF /* ContentView.swift */,
 				6E40BCE425F54DB50023F4DF /* Extensions */,
 				6E9AB56225E7D95700DC88FF /* Info.plist */,
@@ -190,9 +182,7 @@
 				6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */,
 				6E9AB55F25E7D95700DC88FF /* Preview Content */,
 				6EF22AEA260379BD006270D3 /* Resources */,
-				6EF147EE25E81F6B005A21F8 /* Services */,
 				6EF22AE9260379B5006270D3 /* Stores */,
-				6EF147EA25E7F859005A21F8 /* ViewModels */,
 				6EF147E925E7F850005A21F8 /* Views */,
 			);
 			path = PassMaster;
@@ -227,20 +217,6 @@
 				6E79641125FA7EEC00BFD6BB /* AccountView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		6EF147EA25E7F859005A21F8 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		6EF147EE25E81F6B005A21F8 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		6EF22AE4260378FD006270D3 /* Navigation */ = {
