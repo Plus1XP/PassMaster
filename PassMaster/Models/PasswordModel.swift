@@ -19,32 +19,8 @@ struct PasswordModel: Identifiable, Hashable {
     var note : String?
     
     static let `mock` = Self(id: 0, AccountType: .Password, name: "example", userName: "example@example.com", password: "password123", memorable: "Rover",
-                             accountNo: "EX12345", uRL: "www.example.com", note: "Work Account")    
+                             accountNo: "EX12345", uRL: "www.example.com", note: "Work Account")
     static let `empty` = Self(id: 0, AccountType: .Password, name: "", userName: "", password: "", memorable: "", accountNo: "", uRL: "", note: "")
-    
-//    init() {
-//
-//    }
-//
-//    init(userName: String, password: String, memorable: String?, accountNo: String?, uRL: String?, notes: String?) {
-//        self.name = userName
-//        self.password = password
-//        self.memorable = memorable
-//        self.accountNo = accountNo
-//        self.uRL = uRL
-//        self.notes = notes
-//    }
-    
-    //let accounts = [AccountModel]()
-    
-//    init(id: Int, name: String, userName: String, password: String, uRL: String, notes: String) {
-//        self.id = id
-//        self.name = name
-//        self.userName = userName
-//        self.password = password
-//        self.uRL = uRL
-//        self.notes = notes
-//    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -56,12 +32,16 @@ struct PasswordModel: Identifiable, Hashable {
         hasher.combine(note)
     }
     
-    /*
-    let GetId = {
-       var count = 0
-        for <#item#> in accounts {
-            count += 1
-        }
+    func equals(_ CompareTo: PasswordModel) -> Bool {
+        return
+            self.id == CompareTo.id &&
+            self.AccountType == CompareTo.AccountType &&
+            self.name == CompareTo.name &&
+            self.userName == CompareTo.userName &&
+            self.password == CompareTo.password &&
+            self.memorable == CompareTo.memorable &&
+            self.accountNo == CompareTo.accountNo &&
+            self.uRL == CompareTo.uRL &&
+            self.note == CompareTo.note
     }
- */
 }
