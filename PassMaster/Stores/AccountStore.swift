@@ -12,31 +12,31 @@ class AccountStore : ObservableObject{
     @Published var Passwords: [PasswordModel]
     @Published var Cards: [CardModel]
     @Published var Notes: [NoteModel]
-
-    @Published var Accounts: [AccountType] = [AccountType.Password, AccountType.Card, AccountType.Note]
+    
+    @Published var Accounts: [AccountType] = [
+        AccountType.Password,
+        AccountType.Card,
+        AccountType.Note
+    ]
     
     init() {
         self.Passwords = [ PasswordModel(id: 1, AccountType: AccountType.Password, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL: "www.Tesco.com", note: "Food is nice"),
                      PasswordModel(id: 2, AccountType: AccountType.Password, name: "John Lewis", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.johnlewis.com"),
                      PasswordModel(id: 3, AccountType: AccountType.Password, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", note: "Just happy to be here")]
         
-        self.Cards = [CardModel(id: 1, AccountType: AccountType.Card, name: "Visa", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
-                       CardModel(id: 2, AccountType: AccountType.Card, name: "Mastercard", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
-                       CardModel(id: 3, AccountType: AccountType.Card, name: "AMEX", number: 5555123456789900, end: "Dec 22", cvv: 313)]
+//        self.Cards = [CardModel(id: 1, AccountType: AccountType.Card, name: "Visa", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
+//                       CardModel(id: 2, AccountType: AccountType.Card, name: "Mastercard", number: 5555123456789900, start: "Jan 19", end: "Dec 22", cvv: 313),
+//                       CardModel(id: 3, AccountType: AccountType.Card, name: "AMEX", number: 5555123456789900, end: "Dec 22", cvv: 313)]
+        self.Cards = [CardModel(id: 1, AccountType: AccountType.Card, name: "Visa", number: "5555123456789900", start: "Jan 19", end: "Dec 22", cvv: "313"),
+                      CardModel(id: 2, AccountType: AccountType.Card, name: "Mastercard", number: "5555123456789900", start: "Jan 19", end: "Dec 22", cvv: "313"),
+                      CardModel(id: 3, AccountType: AccountType.Card, name: "AMEX", number: "5555123456789900", end: "Dec 22", cvv: "313")]
         
         self.Notes = [NoteModel(id: 1, AccountType: AccountType.Note, name: "Card Pins", note: "Visa - 1234"),
                       NoteModel(id: 2, AccountType: AccountType.Note, name: "Todo", note: "Go Gym!"),
                       NoteModel(id: 3, AccountType: AccountType.Note, name: "Call Doctor", note: "Tell him about PAIN")]
     }
     
-//    var accounts = [PasswordModel]()
-//
-//    func AddAccount(account : PasswordModel) -> Void{
-//
-//        accounts.append(account)
-//    }
-    
-    func AddPassword(account : PasswordModel) -> Void{
+    func AddPassword(account : PasswordModel) -> Void {
         
         var password: PasswordModel
         password = account
@@ -44,24 +44,6 @@ class AccountStore : ObservableObject{
         password.AccountType = .Password
         
         Passwords.append(password)
-    }
-    
-    func AddPassword(name: String, userName: String, password: String, memorable: String?, AccountNo: String?, uRL: String?, notes: String?) -> Void{
-        
-        let id = GetNewPasswordId()
-        let accountType = AccountType.Password
-        
-        let account = PasswordModel(
-                                    id: id,
-                                    AccountType: accountType,
-                                    name: name,
-                                    userName: userName,
-                                    password: password,
-                                    memorable: memorable,
-                                    accountNo: AccountNo,
-                                    uRL: uRL,
-                                    note: notes)
-        Passwords.append(account)
     }
     
     func AddCard(account: CardModel) -> Void {
@@ -74,24 +56,6 @@ class AccountStore : ObservableObject{
         Cards.append(card)
     }
     
-    func AddCard(name: String, number: String, start: String?, end: String, cvv: String, notes: String?) -> Void{
-        
-        let id = GetNewCardId()
-        let accountType = AccountType.Card
-        
-        let account: [CardModel] = [CardModel(
-                                            id: id,
-                                            AccountType: accountType,
-                                            name: name,
-                                            number: Int(number) ?? 0,
-                                            start: start,
-                                            end: end,
-                                            cvv: Int(cvv) ?? 0,
-                                            note: notes)]
-        
-        Cards.append(contentsOf: account)
-    }
-    
     func AddNote(account: NoteModel) -> Void {
         
         var note: NoteModel
@@ -101,31 +65,6 @@ class AccountStore : ObservableObject{
         
         Notes.append(note)
     }
-    
-    func AddNote(title: String, body: String) -> Void{
-        
-        let id = GetNewNoteId()
-        let accountType = AccountType.Note
-        
-        let account: [NoteModel] = [NoteModel(
-                                            id: id,
-                                            AccountType: accountType,
-                                            name: title,
-                                            note: body)]
-        
-        Notes.append(contentsOf: account)
-    }
-    
-//    func RemoveAccount(account : PasswordModel) -> Void {
-//        
-//        for item in accounts {
-//            var count = 0
-//            if item.id == account.id {
-//                accounts.remove(at: count)
-//            }
-//            count += 1
-//        }
-//    }
     
     func RemovePassword(id: Int) {
         
@@ -148,61 +87,52 @@ class AccountStore : ObservableObject{
         Notes.remove(at: index)
     }
     
-    func EditPassword(id: Int, name: String, userName: String, password: String, memorable: String?, AccountNo: String?, uRL: String?, notes: String?) -> Void{
-
-        let index = Passwords.firstIndex(where: {$0.id == id})
-
-        let accountType = AccountType.Password
+    func EditPassword(modified: PasswordModel) -> Void {
+        let index = Passwords.firstIndex(where: {$0.id == modified.id})
+        let original: PasswordModel = Passwords[index ?? 0]
+        var temp = modified
         
-        let account = PasswordModel(
-                                id: id,
-                                AccountType: accountType,
-                                name: name,
-                                userName: userName,
-                                password: password,
-                                memorable: memorable,
-                                accountNo: AccountNo,
-                                uRL: uRL,
-                                note: notes)
-        
-        Passwords[index ?? 0] = account
+        if !modified.equals(original) {
+            temp.name = modified.name == original.name ? original.name : modified.name
+            temp.userName = modified.userName == original.userName ? original.userName : modified.userName
+            temp.password = modified.password == original.password ? original.password : modified.password
+            temp.memorable = modified.memorable == original.memorable ? original.memorable : modified.memorable
+            temp.accountNo = modified.accountNo == original.accountNo ? original.accountNo : modified.accountNo
+            temp.uRL = modified.uRL == original.uRL ? original.uRL : modified.uRL
+            temp.note = modified.note == original.note ? original.note : modified.note
+            Passwords[index ?? 0] = temp
+        }
     }
     
-    func EditCard(id: Int, name: String, number: Int, start: String?, end: String, cvv: Int, notes: String?) -> Void{
-        
-        let index = Cards.firstIndex(where: {$0.id == id})
-        
-        let accountType = AccountType.Card
-        
-        let account = CardModel(
-                            id: id,
-                            AccountType: accountType,
-                            name: name,
-                            number: number,
-                            start: start,
-                            end: end,
-                            cvv: number,
-                            note: notes)
-        
-        Cards[index ?? 0] = account
-    }
-    
-    func EditNote(id: Int, title: String, body: String) -> Void{
-        
-        let index = Notes.firstIndex(where: {$0.id == id})
+    func EditCard(modified: CardModel) -> Void {
+        let index = Cards.firstIndex(where: {$0.id == modified.id})
+        let original: CardModel = Cards[index ?? 0]
+        var temp = modified
 
-        let accountType = AccountType.Note
-        
-        let account = NoteModel(
-                            id: id,
-                            AccountType: accountType,
-                            name: title,
-                            note: body)
-        
-        Notes[index ?? 0] = account
+        if !modified.equals(original) {
+            temp.name = modified.name == original.name ? original.name : modified.name
+            temp.number = modified.number == original.number ? original.number : modified.number
+            temp.start = modified.start == original.start ? original.start : modified.start
+            temp.end = modified.end == original.end ? original.end : modified.end
+            temp.cvv = modified.cvv == original.cvv ? original.cvv : modified.cvv
+            temp.note = modified.note == original.note ? original.note : modified.note
+            Cards[index ?? 0] = temp
+        }
     }
     
-    func RestorePassword(account : PasswordModel) -> Void{
+    func EditNote(modified: NoteModel) -> Void {
+        let index = Notes.firstIndex(where: {$0.id == modified.id})
+        let original: NoteModel = Notes[index ?? 0]
+        var temp = modified
+        
+        if !modified.equals(original) {
+            temp.name = modified.name == original.name ? original.name : modified.name
+            temp.note = modified.note == original.note ? original.note : modified.note
+            Notes[index ?? 0] = temp
+        }
+    }
+    
+    func RestorePassword(account : PasswordModel) -> Void {
         
         Passwords.append(account)
         //Passwords = Passwords.sorted(by: { $0.id > $1.id })
@@ -231,12 +161,6 @@ class AccountStore : ObservableObject{
         return accounts.firstIndex(of: name)
     }
     */
-    
-//    func GetNewAccountId() -> Int {
-//        
-//        //return accounts.count + 1
-//        return accounts.last?.id ?? 0 + 1
-//    }
     
     func GetNewPasswordId() -> Int {
         
