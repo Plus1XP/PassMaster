@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var model = AccountStore()
+    @StateObject private var accountStore = AccountStore()
+    @StateObject private var passwordStore = PasswordStore()
+    @StateObject private var cardStore = CardStore()
+    @StateObject private var noteStore = NoteStore()
     @State private var selectedAccount: AccountType = .Password
     @State private var canShowCreationView = false
     
@@ -31,7 +34,11 @@ struct HomeView: View {
                     HomeTab(selectedAccount: $selectedAccount)
                 }
             }
-        }.environmentObject(model)
+        }
+        .environmentObject(accountStore)
+        .environmentObject(passwordStore)
+        .environmentObject(cardStore)
+        .environmentObject(noteStore)
     }
 }
 
