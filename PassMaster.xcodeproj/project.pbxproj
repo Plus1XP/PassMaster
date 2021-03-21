@@ -41,6 +41,9 @@
 		6EAC5C38260129DA007511F8 /* PasswordEditForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAC5C37260129DA007511F8 /* PasswordEditForm.swift */; };
 		6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED00F6825F027B500892340 /* NoteDetailsView.swift */; };
 		6ED1369A2604F5EE00510DB0 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED136992604F5EE00510DB0 /* TextStyle.swift */; };
+		6EE0D9142606917A00E3A96B /* PasswordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE0D9132606917900E3A96B /* PasswordStore.swift */; };
+		6EE0D9172606918800E3A96B /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE0D9162606918800E3A96B /* CardStore.swift */; };
+		6EE0D91A2606919800E3A96B /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE0D9192606919800E3A96B /* NoteStore.swift */; };
 		6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */; };
 		6EF147F025E81F9A005A21F8 /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF147EF25E81F9A005A21F8 /* AccountStore.swift */; };
 		6EF1481025EAA183005A21F8 /* PasswordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF1480F25EAA183005A21F8 /* PasswordDetailsView.swift */; };
@@ -88,6 +91,9 @@
 		6EAC5C37260129DA007511F8 /* PasswordEditForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditForm.swift; sourceTree = "<group>"; };
 		6ED00F6825F027B500892340 /* NoteDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsView.swift; sourceTree = "<group>"; };
 		6ED136992604F5EE00510DB0 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		6EE0D9132606917900E3A96B /* PasswordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStore.swift; sourceTree = "<group>"; };
+		6EE0D9162606918800E3A96B /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
+		6EE0D9192606919800E3A96B /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
 		6EF147EB25E7FA51005A21F8 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		6EF147EF25E81F9A005A21F8 /* AccountStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStore.swift; sourceTree = "<group>"; };
 		6EF1480F25EAA183005A21F8 /* PasswordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDetailsView.swift; sourceTree = "<group>"; };
@@ -276,6 +282,9 @@
 			children = (
 				6EF147EF25E81F9A005A21F8 /* AccountStore.swift */,
 				6EA4999925F00B83006D7FC6 /* BlurTextStore.swift */,
+				6EE0D9132606917900E3A96B /* PasswordStore.swift */,
+				6EE0D9162606918800E3A96B /* CardStore.swift */,
+				6EE0D9192606919800E3A96B /* NoteStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -365,12 +374,14 @@
 				6E21C0CB25F2C706006A395E /* AccountType.swift in Sources */,
 				6E21C0D125F2E81B006A395E /* CardView.swift in Sources */,
 				6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */,
+				6EE0D91A2606919800E3A96B /* NoteStore.swift in Sources */,
 				6EF147EC25E7FA51005A21F8 /* PasswordModel.swift in Sources */,
 				6E943BA726010917007942CA /* AccountListForm.swift in Sources */,
 				6E21C0E225F51C70006A395E /* CardCreationView.swift in Sources */,
 				6E3DD1872601514E00BDDCDE /* CopyButton.swift in Sources */,
 				6E40BCE925F5662B0023F4DF /* CardEditView.swift in Sources */,
 				6E3DD17726012F3D00BDDCDE /* SaveButton.swift in Sources */,
+				6EE0D9172606918800E3A96B /* CardStore.swift in Sources */,
 				6E21C0DF25F51C5E006A395E /* NoteCreationView.swift in Sources */,
 				6E3DD18426014D9B00BDDCDE /* RestoreAccountButton.swift in Sources */,
 				6EF147F025E81F9A005A21F8 /* AccountStore.swift in Sources */,
@@ -387,6 +398,7 @@
 				6EF2B0A52603C92D00A60A9D /* BlurButton.swift in Sources */,
 				6E21C0E525F53551006A395E /* PasswordEditView.swift in Sources */,
 				6E57243326011297001256EF /* CreateAccountSwitch.swift in Sources */,
+				6EE0D9142606917A00E3A96B /* PasswordStore.swift in Sources */,
 				6E9AB55A25E7D95400DC88FF /* PassMasterApp.swift in Sources */,
 				6E3DD17426012EF400BDDCDE /* DismissButton.swift in Sources */,
 				6E21C0D825F51AE6006A395E /* PasswordCreationView.swift in Sources */,

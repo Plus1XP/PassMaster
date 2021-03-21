@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct HomeTab: View {
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var accountStore: AccountStore
     @Binding var selectedAccount: AccountType
     
     var body: some View {
         Picker("Select Account", selection: $selectedAccount) {
-            ForEach(model.Accounts, id: \.self) { account in
+            ForEach(accountStore.Accounts, id: \.self) { account in
                 Button(
                     action: {
                         self.selectedAccount = account
