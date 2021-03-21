@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct NoteView: View {
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var noteStore: NoteStore
     @State private var selectedNote: NoteModel = NoteModel.mock
     @State private var canShowDetailsView = false
     
     var body: some View {
         Form{
             Section(header: Text("Notes")){
-                List(self.model.Notes, id: \.self) { selectedNote in
+                List(self.noteStore.Notes, id: \.self) { selectedNote in
                     Button(
                         action: {
                             self.selectedNote = selectedNote

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject private var model = AccountStore()
+    @EnvironmentObject var noteStore: NoteStore
     @Binding var selection: NoteModel
     @State private var canShowEditView = false
     @State private var canShowRecoverButton = false
@@ -28,7 +28,7 @@ struct NoteDetailsView: View {
                 
                 if canShowRecoverButton {
                     RestoreAccountButton(canShowRecoverButton: $canShowRecoverButton, isShowingRecoverAlert: $isShowingRecoverAlert, accountName: selection.name, function: {
-                        model.RestoreNote(account: selection)
+                        noteStore.RestoreNote(account: selection)
                     })
                 }
                 

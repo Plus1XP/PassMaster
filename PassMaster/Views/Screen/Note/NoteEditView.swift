@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var noteStore: NoteStore
     @Binding var selection: NoteModel
     @State var isShowingAlert = false
     
@@ -20,7 +20,7 @@ struct NoteEditView: View {
                 
                 Section() {
                     DeleteAccountButton(isShowingAlert: $isShowingAlert, accountName: selection.name, function: {
-                        model.RemoveNote(id: selection.id)
+                        noteStore.RemoveNote(id: selection.id)
                     })
                 }
             }.navigationBarTitle(Text(selection.name))
@@ -33,7 +33,7 @@ struct NoteEditView: View {
                     },
                 trailing:
                     Button(action: {
-                        self.model.EditNote(modified: selection)
+                        self.noteStore.EditNote(modified: selection)
                         
                         presentationMode.wrappedValue.dismiss()
                     }) {

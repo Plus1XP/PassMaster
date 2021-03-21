@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteCreationView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var noteStore: NoteStore
     @State private var note: NoteModel = NoteModel.empty
     
     var body: some View {
@@ -26,7 +26,7 @@ struct NoteCreationView: View {
                     },
                 trailing:
                     Button(action: {
-                        self.model.AddNote(account: note)
+                        self.noteStore.AddNote(account: note)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         SaveButton()
