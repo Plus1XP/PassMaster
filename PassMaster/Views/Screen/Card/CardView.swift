@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CardView: View {
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var cardStore: CardStore
     @State private var selectedCard: CardModel = CardModel.mock
     @State private var canShowDetailsView = false
     
     var body: some View {
         Form{
             Section(header: Text("Cards")){
-                List(self.model.Cards, id: \.self) { selectedCard in
+                List(self.cardStore.Cards, id: \.self) { selectedCard in
                     Button(
                         action: {
                             self.selectedCard = selectedCard

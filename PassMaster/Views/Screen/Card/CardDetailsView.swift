@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject private var model = AccountStore()
+    @EnvironmentObject var cardStore: CardStore
     @Binding var selection: CardModel
     @State private var canShowEditView = false
     @State private var canShowRecoverButton = false
@@ -29,7 +29,7 @@ struct CardDetailsView: View {
                 
                 if canShowRecoverButton {
                     RestoreAccountButton(canShowRecoverButton: $canShowRecoverButton, isShowingRecoverAlert: $isShowingRecoverAlert, accountName: selection.name, function: {
-                        model.RestoreCard(account: selection)
+                        cardStore.RestoreCard(account: selection)
                     })
                 }
                 

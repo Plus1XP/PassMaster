@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardCreationView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var cardStore: CardStore
     @State private var card: CardModel = CardModel.empty
     
     var body: some View {
@@ -26,7 +26,7 @@ struct CardCreationView: View {
                     },
                 trailing:
                     Button(action: {
-                        self.model.AddCard(account: card)
+                        self.cardStore.AddCard(account: card)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         SaveButton()
