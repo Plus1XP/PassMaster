@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct PasswordView: View {
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var passwordStore: PasswordStore
     @State private var selectedLogin: PasswordModel = PasswordModel.mock
     @State private var canShowDetailsView = false
     
     var body: some View {
         Form{
             Section(header: Text("Logins & Passwords")){
-                List(self.model.Passwords, id: \.self) { selectedLogin in
+                List(self.passwordStore.Passwords, id: \.self) { selectedLogin in
                     Button(
                         action: {
                             self.selectedLogin = selectedLogin

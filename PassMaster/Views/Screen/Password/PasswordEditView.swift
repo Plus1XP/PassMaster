@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PasswordEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var passwordStore: PasswordStore
     @Binding var selection: PasswordModel
     @State var isShowingAlert = false
     
@@ -20,7 +20,7 @@ struct PasswordEditView: View {
                 
                 Section() {
                     DeleteAccountButton(isShowingAlert: $isShowingAlert, accountName: selection.name, function: {
-                        model.RemovePassword(id: selection.id)
+                        passwordStore.RemovePassword(id: selection.id)
                     })
                 }
             }.navigationBarTitle(Text(selection.name))
@@ -33,7 +33,7 @@ struct PasswordEditView: View {
                     },
                 trailing:
                     Button(action: {
-                        self.model.EditPassword(modified: selection)
+                        self.passwordStore.EditPassword(modified: selection)
                         
                         presentationMode.wrappedValue.dismiss()
                     }) {

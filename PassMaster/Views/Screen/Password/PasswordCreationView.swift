@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PasswordCreationView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var passwordStore: PasswordStore
     @State private var password: PasswordModel = PasswordModel.empty
     
     var body: some View {
@@ -27,7 +27,7 @@ struct PasswordCreationView: View {
                     },
                 trailing:
                     Button(action: {
-                        self.model.AddPassword(account: password)
+                        self.passwordStore.AddPassword(account: password)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         SaveButton()

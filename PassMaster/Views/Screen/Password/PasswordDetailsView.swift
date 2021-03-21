@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PasswordDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: AccountStore
+    @EnvironmentObject var passwordStore: PasswordStore
     @Binding var selection: PasswordModel
     @State private var canShowEditView = false
     @State private var canShowRecoverButton = false
@@ -29,7 +29,7 @@ struct PasswordDetailsView: View {
                 
                 if canShowRecoverButton {
                     RestoreAccountButton(canShowRecoverButton: $canShowRecoverButton, isShowingRecoverAlert: $isShowingRecoverAlert, accountName: selection.name, function: {
-                        model.RestorePassword(account: selection)
+                        passwordStore.RestorePassword(account: selection)
                     })
                 }
             }
