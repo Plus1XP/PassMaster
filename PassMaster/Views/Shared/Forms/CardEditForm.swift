@@ -9,14 +9,15 @@ import SwiftUI
 
 struct CardEditForm: View {
     @Binding var account: CardModel
+    @State var isSelectingDate = false
 
     var body: some View {
         Section(header: Text("Edit Card Information")) {
             Group {
                 TextField("Account Name", text: $account.name)
                 TextField("Card Number", text: $account.number).keyboardType(.numberPad)
-                TextField("Start Date", text: $account.start.bound)
-                TextField("Expiry Date", text: $account.end)
+                DateEditButton(dateTitle: "Card Start", dateField: "Start Date", month: $account.startMonth.bound, year: $account.startYear.bound, isSelectingDate: $isSelectingDate)
+                DateEditButton(dateTitle: "Card End", dateField: "Expiry Date", month: $account.endMonth, year: $account.endYear, isSelectingDate: $isSelectingDate)
                 TextField("CVV", text: $account.cvv).keyboardType(.numberPad)
             }
             .modifier(FormGroupStyle())
