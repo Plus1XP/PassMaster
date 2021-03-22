@@ -20,8 +20,8 @@ struct CardDetailsForm: View {
                 Spacer()
                 BlurButton().environmentObject(model)
             }
-            Text(String(selection.start ?? ""))
-            Text(String(selection.end))
+            Text(String("\(selection.startMonth.bound) \(selection.startYear.bound)"))
+            Text(String("\(selection.endMonth) \(selection.endYear)"))
         }
         
         Section(header: Text("Notes")) {
