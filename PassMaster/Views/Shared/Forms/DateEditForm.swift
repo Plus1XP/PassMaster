@@ -14,6 +14,7 @@ struct DateEditForm: View {
     @Binding var month: String
     @Binding var year: String
     
+    @State var canClearSelection: Bool = false
     @State var selectedMonth: Int = 0
     @State var selectedYear: Int = 2015
     
@@ -33,7 +34,6 @@ struct DateEditForm: View {
                             Text(self.monthSource[$0])
                         }
                     }
-                    .pickerStyle(WheelPickerStyle())
                     .frame(width: UIScreen.main.bounds.width/2)
                     .clipped()
                 }
@@ -44,27 +44,47 @@ struct DateEditForm: View {
                             Text(String($0))
                         }
                     }
-                    .pickerStyle(WheelPickerStyle())
                     .frame(width: UIScreen.main.bounds.width/2)
                     .clipped()
                 }
             }
+            .pickerStyle(WheelPickerStyle())
             .onAppear(perform: {
                 self.selectedMonth = monthSource.firstIndex(of: self.month) ?? selectedMonth
                 self.selectedYear = Int(self.year) ?? selectedYear
             })
             .onDisappear(perform: {
-                self.month = "\(DateFormatter().shortMonthSymbols[selectedMonth])"
-                self.year = selectedYear.description
+                if self.canClearSelection == true && self.selectedYear == 0
+                {
+                    self.month = ""
+                    self.year = ""
+                }
+                else
+                {
+                    self.month = "\(DateFormatter().shortMonthSymbols[selectedMonth])"
+                    self.year = selectedYear.description
+                }
             })
+//            .onChange(of: selectedMonth, perform: { value in
+//                self.month = "\(DateFormatter().shortMonthSymbols[selectedMonth])"
+//            })
+//            .onChange(of: selectedYear, perform: { value in
+//                self.year = selectedYear.description
+//            })
             .navigationBarTitle(Text(title))
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
                         DismissButton()
-                    })
+                    },
+                trailing:
+                    ClearButton(canClearSelection: $canClearSelection)
+                    .onChange(of: self.canClearSelection, perform: { value in
+                        self.selectedMonth = 0
+                        self.selectedYear = 0
+                    }))
         }
     }
 }
