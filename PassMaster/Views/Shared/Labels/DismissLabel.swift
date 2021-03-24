@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct DismissButton: View {
+struct DismissLabel: View {
     var body: some View {
-        Label("Dismiss", systemImage: "trash")
+        Label("Dismiss", systemImage: "chevron.down.circle")
     }
 }
 
 struct DismissButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        DismissButton()
+        DismissLabel()
             .previewLayout(.sizeThatFits)
     }
 }
