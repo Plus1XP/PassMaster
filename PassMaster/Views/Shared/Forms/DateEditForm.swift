@@ -77,7 +77,7 @@ struct DateEditForm: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     ClearButton(canClearSelection: $canClearSelection)

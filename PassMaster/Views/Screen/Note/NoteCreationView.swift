@@ -22,14 +22,14 @@ struct NoteCreationView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     Button(action: {
                         self.noteStore.AddNote(account: note)
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        SaveButton()
+                        SaveLabel()
                     })
         }
     }

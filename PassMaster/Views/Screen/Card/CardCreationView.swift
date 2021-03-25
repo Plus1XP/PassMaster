@@ -22,14 +22,14 @@ struct CardCreationView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     Button(action: {
                         self.cardStore.AddCard(account: card)
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        SaveButton()
+                        SaveLabel()
                     })
         }
     }

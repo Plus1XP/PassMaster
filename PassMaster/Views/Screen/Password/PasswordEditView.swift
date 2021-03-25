@@ -27,17 +27,16 @@ struct PasswordEditView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     Button(action: {
                         self.passwordStore.EditPassword(modified: selection)
-                        
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        SaveButton()
+                        SaveLabel()
                     })
         }
     }

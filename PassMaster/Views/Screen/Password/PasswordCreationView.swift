@@ -15,7 +15,7 @@ struct PasswordCreationView: View {
     var body: some View {
         NavigationView {
             Form{
-                    PasswordEditForm(account: $password)
+                PasswordEditForm(account: $password)
             }
             .navigationBarTitle(Text(password.name))
             .navigationBarItems(
@@ -23,14 +23,14 @@ struct PasswordCreationView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     Button(action: {
                         self.passwordStore.AddPassword(account: password)
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        SaveButton()
+                        SaveLabel()
                     })
         }
     }

@@ -27,17 +27,16 @@ struct NoteEditView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     Button(action: {
                         self.noteStore.EditNote(modified: selection)
-                        
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        SaveButton()
+                        SaveLabel()
                     })
         }
     }

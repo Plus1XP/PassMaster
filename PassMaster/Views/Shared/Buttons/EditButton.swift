@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct EditButton: View {
+    @Binding var canShowEditView: Bool
+    
     var body: some View {
-        Label("Edit", systemImage: "pencil")
+        Button(
+            action: {
+                self.canShowEditView.toggle()
+            },
+            label: {
+                Label("Edit", systemImage: "pencil")
+            })
     }
 }
 
 struct EditButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        EditButton()
+        EditButton(canShowEditView: .constant(false))
+            .previewLayout(.sizeThatFits)
+        
     }
 }

@@ -16,7 +16,7 @@ struct PasswordDetailsView: View {
     @State private var isShowingCopyAlert = false
     @State private var isShowingRecoverAlert = false
     private let itemName: String = AccountType.Password.rawValue
-
+    
     
     var body: some View {
         NavigationView {
@@ -40,18 +40,14 @@ struct PasswordDetailsView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
-                },
+                        DismissLabel()
+                    },
                 trailing:
-                    Button(action: {
-                            self.canShowEditView.toggle()
-                    }) {
-                        EditButton()
-                            .sheet(isPresented: $canShowEditView) {
-                                PasswordEditView(selection: $selection)
-                            }
+                    EditButton(canShowEditView: $canShowEditView)
+                    .sheet(isPresented: $canShowEditView) {
+                        PasswordEditView(selection: $selection)
                     })
         }
     }

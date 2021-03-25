@@ -16,7 +16,6 @@ struct CardDetailsView: View {
     @State private var isShowingCopyAlert = false
     @State private var isShowingRecoverAlert = false
     private let itemName: String = AccountType.Card.rawValue
-
     
     var body: some View {
         NavigationView {
@@ -38,20 +37,17 @@ struct CardDetailsView: View {
                 _ in self.canShowRecoverButton = true
             }
             .navigationBarTitle(Text(selection.name))
-             .navigationBarItems(
+            .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
-                        DismissButton()
-                },
-                trailing:
-                    Button(action: {
-                            self.canShowEditView.toggle()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        EditButton()
-                            .sheet(isPresented: $canShowEditView) {
-                                CardEditView(selection: $selection)
-                            }
+                        DismissLabel()
+                    },
+                trailing:
+                    EditButton(canShowEditView: $canShowEditView)
+                    .sheet(isPresented: $canShowEditView) {
+                        CardEditView(selection: $selection)
                     })
         }
     }

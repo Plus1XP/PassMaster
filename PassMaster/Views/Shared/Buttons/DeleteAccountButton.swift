@@ -8,36 +8,36 @@
 import SwiftUI
 
 struct DeleteAccountButton: View {
-    private let buttonText: String = "Delete Account"
-    
-    @Binding var isShowingAlert: Bool
-    
     @Environment(\.presentationMode) var presentationMode
-    
+    @Binding var isShowingAlert: Bool
     var accountName: String
-    
     var function: () -> Void
     
     var body: some View {
-        Button(buttonText) {
-            self.isShowingAlert = true
-        }.frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            alignment: .center)
-        .foregroundColor(Color.red)
-        .font(Font.headline.weight(.bold))
-        .alert(isPresented: $isShowingAlert) {
-            Alert(
-                title: Text("Delete \(accountName)"),
-                message: Text("Confirm \(accountName) removal"),
-                primaryButton: .destructive(Text("Delete")) {
-                    NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "AccountRemoved")))
-                    self.function()
-                    presentationMode.wrappedValue.dismiss()
-                },
-                secondaryButton: .cancel())
-        }
+        Button(
+            action: {
+                self.isShowingAlert.toggle()
+            },
+            label: {
+                Label("Delete Account", systemImage: "trash")
+            })
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                alignment: .center)
+            .foregroundColor(Color.red)
+            .font(Font.headline.weight(.bold))
+            .alert(isPresented: $isShowingAlert) {
+                Alert(
+                    title: Text("Delete \(accountName)"),
+                    message: Text("Confirm \(accountName) removal"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "AccountRemoved")))
+                        self.function()
+                        presentationMode.wrappedValue.dismiss()
+                    },
+                    secondaryButton: .cancel())
+            }
     }
 }
 

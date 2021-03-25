@@ -27,16 +27,16 @@ struct CardEditView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        DismissButton()
+                        DismissLabel()
                     },
                 trailing:
                     Button(action: {
                         self.cardStore.EditCard(modified: selection)
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        SaveButton()
+                        SaveLabel()
                     })
         }
     }
@@ -46,6 +46,6 @@ struct CardEditView_Previews: PreviewProvider {
     static var previews: some View {
         CardEditView(selection: .constant(CardModel.mock))
             .environmentObject(AccountStore())
-            //.colorScheme(.light)
+        //.colorScheme(.light)
     }
 }

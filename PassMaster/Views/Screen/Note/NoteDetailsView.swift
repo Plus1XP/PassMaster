@@ -39,20 +39,16 @@ struct NoteDetailsView: View {
                 _ in self.canShowRecoverButton = true
             }
             .navigationBarTitle(Text(selection.name))
-             .navigationBarItems(
+            .navigationBarItems(
                 leading:
                     Button(action: {
-                            presentationMode.wrappedValue.dismiss() }) {
-                        DismissButton()
-                },
-                trailing:
-                    Button(action: {
-                            self.canShowEditView.toggle()
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        EditButton()
-                            .sheet(isPresented: $canShowEditView) {
-                                NoteEditView(selection: $selection)
-                            }
+                        DismissLabel()},
+                trailing:
+                    EditButton(canShowEditView: $canShowEditView)
+                    .sheet(isPresented: $canShowEditView) {
+                        NoteEditView(selection: $selection)
                     })
         }
     }

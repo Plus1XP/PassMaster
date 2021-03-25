@@ -16,7 +16,7 @@ struct NoteDetailsForm: View {
             HStack {
                 TextEditor(text: $selection.note).disabled(true)
                     .blur(radius: model.GetTextBlurRadius())
-                    BlurButton().environmentObject(model)
+                BlurButton().environmentObject(model)
             }
         }
     }
