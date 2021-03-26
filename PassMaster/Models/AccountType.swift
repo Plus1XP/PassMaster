@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AccountType: String {
+enum AccountType: String, Codable {
     case Password = "Password"
     case Card = "Card"
     case Note = "Note"
