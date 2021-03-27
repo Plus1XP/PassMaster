@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PasswordModel: Identifiable, Hashable {
+struct PasswordModel: Identifiable, Hashable, Codable {
     var id : Int
     var AccountType: AccountType
     var name : String
