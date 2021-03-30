@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NoteModel: Hashable {
+struct NoteModel: Identifiable, Hashable, Codable {
     var id: Int
     var AccountType: AccountType
     var name: String
