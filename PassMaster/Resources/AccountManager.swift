@@ -10,11 +10,13 @@ import Foundation
 class AccountManager: ObservableObject {
     
     let manager: FileManager
+    let encoder = JSONEncoder()
     let passmasterDirName: String
     let passmasterFileName: String
     
     init() {
         self.manager = FileManager.default
+        self.encoder.outputFormatting = .prettyPrinted
         self.passmasterDirName = "PassMaster"
         self.passmasterFileName = "accounts.json"
     }
