@@ -8,7 +8,6 @@
 import Foundation
 
 class AccountManager: ObservableObject {
-    
     let manager: FileManager
     let encoder = JSONEncoder()
     let passmasterDirName: String
@@ -21,4 +20,10 @@ class AccountManager: ObservableObject {
         self.passmasterFileName = "accounts.json"
     }
     
+    func GetDocumentsUrl() -> URL {
+        let path = manager.urls(for: .documentDirectory,
+                                 in: .userDomainMask)
+        let documentsDirectory = path[0]
+        return documentsDirectory
+    }
 }
