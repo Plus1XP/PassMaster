@@ -26,4 +26,9 @@ class AccountManager: ObservableObject {
         let documentsDirectory = path[0]
         return documentsDirectory
     }
+    
+    func GetPassMasterUrl() -> URL {
+        let passmasterDirectory = GetDocumentsUrl().appendingPathComponent(passmasterDirName)
+        return passmasterDirectory
+    }
 }
