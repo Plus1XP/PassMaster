@@ -31,4 +31,9 @@ class AccountManager: ObservableObject {
         let passmasterDirectory = GetDocumentsUrl().appendingPathComponent(passmasterDirName)
         return passmasterDirectory
     }
+    
+    func GetPassMasterFileUrl() -> URL {
+        let file = GetPassMasterUrl().appendingPathComponent(passmasterFileName)
+        return file
+    }
 }
