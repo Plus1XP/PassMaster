@@ -36,4 +36,17 @@ class AccountManager: ObservableObject {
         let file = GetPassMasterUrl().appendingPathComponent(passmasterFileName)
         return file
     }
+    
+    func CreateDirectory(url: URL) -> Void {
+        do {
+            try manager.createDirectory(
+                at: url,
+                withIntermediateDirectories: true,
+                attributes: [:]
+            )
+        }
+        catch {
+            print(error)
+        }
+    }
 }
