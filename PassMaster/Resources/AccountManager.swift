@@ -49,4 +49,13 @@ class AccountManager: ObservableObject {
             print(error)
         }
     }
+    
+    func CreateFile(url: URL, data: Data) -> Void {
+        if !manager.fileExists(atPath: url.path)
+        {
+            manager.createFile(atPath: url.path,
+                               contents: data,
+                               attributes: nil)
+        }
+    }
 }
