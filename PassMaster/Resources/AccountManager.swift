@@ -58,4 +58,13 @@ class AccountManager: ObservableObject {
                                attributes: nil)
         }
     }
+    
+    func AppendFile(url: URL, data: Data) -> Void {
+        if manager.fileExists(atPath: url.path) {
+            let updater = try? FileHandle(forUpdating: url)
+            updater?.seekToEndOfFile()
+            updater?.write(data)
+            updater?.closeFile()
+        }
+    }
 }
