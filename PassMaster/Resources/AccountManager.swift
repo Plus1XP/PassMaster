@@ -67,4 +67,16 @@ class AccountManager: ObservableObject {
             updater?.closeFile()
         }
     }
+    
+    func RemoveFile(url: URL) -> Void {
+        if manager.fileExists(atPath: url.path)
+        {
+            do {
+                try manager.removeItem(at: url)
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
 }
