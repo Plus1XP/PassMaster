@@ -79,4 +79,13 @@ class AccountManager: ObservableObject {
             }
         }
     }
+    
+    func GetStringFromData(url: URL) -> String {
+        let data = manager.contents(atPath: url.path)!
+//        if manager.fileExists(atPath: url.path)
+//        {
+//            data = manager.contents(atPath: url.path)!
+//        }
+        return data.base64EncodedString()
+    }
 }
