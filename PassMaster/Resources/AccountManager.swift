@@ -88,4 +88,9 @@ class AccountManager: ObservableObject {
 //        }
         return data.base64EncodedString()
     }
+    
+    func GetDataFromString(data: String) -> Data {
+        let localData = data.data(using: .utf8)!
+        return localData
+    }
 }
