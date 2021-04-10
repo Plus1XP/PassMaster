@@ -93,4 +93,27 @@ class AccountManager: ObservableObject {
         let localData = data.data(using: .utf8)!
         return localData
     }
+    
+    func SetAccountData<T: Codable>(collectionKeyName: String, accountModel: [T]) -> Void {
+        let collectionStore = [collectionKeyName: accountModel]
+        
+        if !manager.fileExists(atPath: GetPassMasterFileUrl().path) {
+            CreateJSONFromStore(collectionStore: collectionStore)
+        } else {
+            var isCollectionUpdated = false
+            var isCollectionMissing = false
+            let RootJSONArray: [[String:[T]]] = ReadJSON(accountModel: accountModel)
+            for index in RootJSONArray.indices {
+                if RootJSONArray[index].first?.key == collectionKeyName {
+                    UpdateJSONFromStore(collectionKeyName: collectionKeyName, accountModel: accountModel, RootJSONArray: RootJSONArray, index: index)
+                    isCollectionUpdated = true
+                } else {
+                    isCollectionMissing = true
+                }
+            }
+            if isCollectionMissing == true && isCollectionUpdated == false{
+                AddToJSONFromStore(RootJSONArray: RootJSONArray, collectionStore: collectionStore)
+            }
+        }
+    }
 }
