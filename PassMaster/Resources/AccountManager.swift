@@ -116,4 +116,16 @@ class AccountManager: ObservableObject {
             }
         }
     }
+    
+    func CreateJSONFromStore<T: Codable>(collectionStore: [String:[T]]) -> Void {
+        let RootJSONArray = [collectionStore]
+        //let data = try! encoder.encode(RootJSONArray)
+        var data: Data? = nil
+        do {
+            data = try encoder.encode(RootJSONArray)
+        } catch {
+            print("Create JSON Failed")
+        }
+        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+    }
 }
