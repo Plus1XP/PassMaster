@@ -128,4 +128,18 @@ class AccountManager: ObservableObject {
         }
         CreateFile(url: GetPassMasterFileUrl(), data: data!)
     }
+    
+    func UpdateJSONFromStore<T: Codable>(collectionKeyName: String, accountModel: [T], RootJSONArray: [[String:[T]]], index: Int) -> Void {
+        var RootJSONArray = RootJSONArray
+        RootJSONArray[index][collectionKeyName]?.append(contentsOf: accountModel)
+        //let data = try! encoder.encode(RootJSONArray)
+        var data: Data? = nil
+        do {
+            data = try encoder.encode(RootJSONArray)
+        } catch {
+            print("Update JSON Failed")
+        }
+        RemoveFile(url: GetPassMasterFileUrl())
+        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+    }
 }
