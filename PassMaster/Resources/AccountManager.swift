@@ -142,4 +142,18 @@ class AccountManager: ObservableObject {
         RemoveFile(url: GetPassMasterFileUrl())
         CreateFile(url: GetPassMasterFileUrl(), data: data!)
     }
+    
+    func AddToJSONFromStore<T: Codable>(RootJSONArray: [[String:[T]]], collectionStore: [String:[T]]) -> Void {
+        var RootJSONArray = RootJSONArray
+        RootJSONArray.append(collectionStore)
+        //let data = try! encoder.encode(RootJSONArray)
+        var data: Data? = nil
+        do {
+            data = try encoder.encode(RootJSONArray)
+        } catch {
+            print("Add to JSON Failed")
+        }
+        RemoveFile(url: GetPassMasterFileUrl())
+        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+    }
 }
