@@ -156,4 +156,27 @@ class AccountManager: ObservableObject {
         RemoveFile(url: GetPassMasterFileUrl())
         CreateFile(url: GetPassMasterFileUrl(), data: data!)
     }
+    
+//    func GetRawJSON<T: Codable>(collection: [T]) -> [[String:[T]]] {
+//        let JsonPath = GetPassMasterFileUrl().path
+//        let data = manager.contents(atPath: JsonPath)!
+//        let decoder = JSONDecoder()
+//        //return try! decoder.decode([[String:[T]]].self, from: data)
+//        var val: [[String:[T]]]? = nil
+//        do {
+//            val = try decoder.decode([[String:[T]]].self, from: data)
+//        } catch {
+//            print("Get Raw JSON Failed")
+//        }
+//        return val!
+//    }
+    
+    func GetAccountData<T: Codable>(collectionKeyName: String, collectionStore: inout [T]) -> Void {
+        let RootJSONArray = ReadJSON(accountModel: collectionStore)
+        for index in RootJSONArray.indices {
+            if RootJSONArray[index].first?.key == collectionKeyName {
+                collectionStore = GetCollectionValues(collectionKeyName: collectionKeyName, collectionStore: RootJSONArray[index])
+            }
+        }
+    }
 }
