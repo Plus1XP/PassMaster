@@ -179,4 +179,18 @@ class AccountManager: ObservableObject {
             }
         }
     }
+    
+    func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
+        let JsonPath = GetPassMasterFileUrl().path
+        let data = manager.contents(atPath: JsonPath)!
+        let decoder = JSONDecoder()
+        //return try! decoder.decode([[String:[T]]].self, from: data)
+        var RawJSONArray: [[String:[T]]]? = nil
+        do {
+            RawJSONArray = try decoder.decode([[String:[T]]].self, from: data)
+        } catch {
+            print("Read Raw JSON Failed")
+        }
+        return RawJSONArray!
+    }
 }
