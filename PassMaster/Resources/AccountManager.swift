@@ -193,4 +193,16 @@ class AccountManager: ObservableObject {
         }
         return RawJSONArray!
     }
+    
+    func GetCollectionValues<T>(collectionKeyName: String, collectionStore: [String:[T]]) -> [T] {
+        var accountModel: [T] = [T].init()
+        for key in collectionStore.keys {
+            if key == collectionKeyName {
+                for value in collectionStore.values {
+                    accountModel.append(contentsOf: value)
+                }
+            }
+        }
+        return accountModel
+    }
 }
