@@ -10,15 +10,17 @@ import Foundation
 class PasswordStore : ObservableObject{
     
     @Published var Passwords: [PasswordModel]
+    let accountManager: AccountManager
+    let collectionKey: String
     
     init() {
-        self.Passwords = [ PasswordModel(id: 1, AccountType: AccountType.Password, name: "Tesco", userName: "JTesco@gmail.com", password: "GetmeF00d!", uRL:                                "www.Tesco.com", note: "Food is nice"),
-                           PasswordModel(id: 2, AccountType: AccountType.Password, name: "John Lewis", userName: "JSains@gmail.com", password: "GetmeF00d!", uRL: "www.johnlewis.com"),
-                           PasswordModel(id: 3, AccountType: AccountType.Password, name: "Fitness First", userName: "Gunter@gmail.com", password: "GetmeF00d!", note: "Just happy to be here")]
+        self.Passwords = [PasswordModel].init()
+        self.accountManager = AccountManager()
+        self.collectionKey = "Passwords"
+        self.GetPasswordData()
     }
     
     func GetNewPasswordId() -> Int {
-        
         var total: Int = 0
         let current: Int = Passwords.last?.id ?? 0
         total = current + 1

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var canShowSelectionView: Bool = false
-    
+
     var body: some View {
         Button(action: {
             print("Button Pushed")
