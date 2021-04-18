@@ -27,6 +27,10 @@ class PasswordStore : ObservableObject{
         return total
     }
     
+    func GetPasswordData() -> Void {
+        self.Passwords = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Passwords)
+    }
+    
     func AddPassword(account : PasswordModel) -> Void {
         
         var password: PasswordModel
