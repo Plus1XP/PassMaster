@@ -32,13 +32,13 @@ class PasswordStore : ObservableObject{
     }
     
     func AddPassword(account : PasswordModel) -> Void {
-        
         var password: PasswordModel
         password = account
         password.id = GetNewPasswordId()
         password.AccountType = .Password
         
         Passwords.append(password)
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
     }
     
     func RemovePassword(id: Int) {
