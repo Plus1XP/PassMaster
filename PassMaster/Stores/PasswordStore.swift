@@ -42,9 +42,9 @@ class PasswordStore : ObservableObject{
     }
     
     func RemovePassword(id: Int) {
-        
         let index = Passwords.firstIndex(where: {$0.id == id}) ?? 0
         Passwords.remove(at: index)
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
     }
    
     func EditPassword(modified: PasswordModel) -> Void {
