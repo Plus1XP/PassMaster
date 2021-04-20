@@ -60,7 +60,9 @@ class PasswordStore : ObservableObject{
             temp.accountNo = modified.accountNo == original.accountNo ? original.accountNo : modified.accountNo
             temp.uRL = modified.uRL == original.uRL ? original.uRL : modified.uRL
             temp.note = modified.note == original.note ? original.note : modified.note
+            
             Passwords[index ?? 0] = temp
+            accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
         }
     }
    
