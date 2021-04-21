@@ -67,10 +67,10 @@ class PasswordStore : ObservableObject{
     }
    
     func RestorePassword(account : PasswordModel) -> Void {
-        
         Passwords.append(account)
         Passwords = Passwords.sorted(by: { (first: PasswordModel, second: PasswordModel) -> Bool in
             first.id < second.id
         })
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
     }
 }
