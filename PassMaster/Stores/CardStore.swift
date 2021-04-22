@@ -10,16 +10,18 @@ import Foundation
 class CardStore : ObservableObject{
     
     @Published var Cards: [CardModel]
-
-    init() {
+    let accountManager: AccountManager
+    let collectionKey: String
     
-        self.Cards = [CardModel(id: 1, AccountType: AccountType.Card, name: "Visa", number: "5555123456789900", startMonth: "Jan", startYear: "2019", endMonth: "Dec",                  endYear: "2022", cvv: "313"),
-                      CardModel(id: 2, AccountType: AccountType.Card, name: "Mastercard", number: "5555123456789900", startMonth: "Jul", startYear: "2023", endMonth: "Dec", endYear: "2028", cvv: "313"),
-                      CardModel(id: 3, AccountType: AccountType.Card, name: "AMEX", number: "5555123456789900", endMonth: "Dec", endYear: "Dec 22", cvv: "313")]
+    init() {
+        self.Cards = [CardModel].init()
+        self.accountManager = AccountManager()
+        self.collectionKey = "Cards"
+        self.Cards = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Cards)
+        self.GetCardData()
     }
     
     func GetNewCardId() -> Int {
-        
         return (Cards.last?.id ?? 0) + 1
     }
     
