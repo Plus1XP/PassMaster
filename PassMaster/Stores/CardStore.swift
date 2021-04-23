@@ -25,6 +25,10 @@ class CardStore : ObservableObject{
         return (Cards.last?.id ?? 0) + 1
     }
     
+    func GetCardData() -> Void {
+        self.Cards = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Cards)
+    }
+    
     func AddCard(account: CardModel) -> Void {
         
         var card : CardModel
