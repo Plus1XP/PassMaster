@@ -30,13 +30,13 @@ class CardStore : ObservableObject{
     }
     
     func AddCard(account: CardModel) -> Void {
-        
         var card : CardModel
         card = account
         card.id = GetNewCardId()
         card.AccountType = .Card
         
         Cards.append(card)
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
     }
 
     func RemoveCard(id: Int) {
