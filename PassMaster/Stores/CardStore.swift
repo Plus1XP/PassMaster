@@ -40,9 +40,9 @@ class CardStore : ObservableObject{
     }
 
     func RemoveCard(id: Int) {
-        
         let index = Cards.firstIndex(where: {$0.id == id}) ?? 0
         Cards.remove(at: index)
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
     }
     
     func EditCard(modified: CardModel) -> Void {
