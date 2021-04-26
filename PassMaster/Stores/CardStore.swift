@@ -59,7 +59,9 @@ class CardStore : ObservableObject{
             temp.endYear = modified.endYear == original.endYear ? original.endYear : modified.endYear
             temp.cvv = modified.cvv == original.cvv ? original.cvv : modified.cvv
             temp.note = modified.note == original.note ? original.note : modified.note
+            
             Cards[index ?? 0] = temp
+            accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
         }
     }
   
