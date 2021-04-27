@@ -70,5 +70,6 @@ class CardStore : ObservableObject{
         Cards = Cards.sorted(by: {( first: CardModel, second: CardModel) -> Bool in
             first.id < second.id
         })
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
     }
 }
