@@ -10,15 +10,17 @@ import Foundation
 class NoteStore : ObservableObject{
 
     @Published var Notes: [NoteModel]
+    let accountManager: AccountManager
+    let collectionKey: String
     
     init() {
-        self.Notes = [NoteModel(id: 1, AccountType: AccountType.Note, name: "Card Pins", note: "Visa - 1234"),
-                      NoteModel(id: 2, AccountType: AccountType.Note, name: "Todo", note: "Go Gym!"),
-                      NoteModel(id: 3, AccountType: AccountType.Note, name: "Call Doctor", note: "Tell him about PAIN")]
+        self.Notes = [NoteModel].init()
+        self.accountManager = AccountManager()
+        self.collectionKey = "Notes"
+        self.GetNoteData()
     }
     
     func GetNewNoteId() -> Int {
-        
         let current: Int = Notes.last?.id ?? 0
         print("Current items:", current)
         return current + 1
