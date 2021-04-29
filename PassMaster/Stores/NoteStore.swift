@@ -25,6 +25,10 @@ class NoteStore : ObservableObject{
         print("Current items:", current)
         return current + 1
     }
+    
+    func GetNoteData() -> Void {
+        self.Notes = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Notes)
+    }
 
     func AddNote(account: NoteModel) -> Void {
         
