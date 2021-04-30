@@ -31,13 +31,13 @@ class NoteStore : ObservableObject{
     }
 
     func AddNote(account: NoteModel) -> Void {
-        
         var note: NoteModel
         note = account
         note.id = GetNewNoteId()
         note.AccountType = .Note
         
         Notes.append(note)
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
     }
 
     func RemoveNote(id: Int) {
