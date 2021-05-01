@@ -41,9 +41,9 @@ class NoteStore : ObservableObject{
     }
 
     func RemoveNote(id: Int) {
-        
         let index = Notes.firstIndex(where: {$0.id == id}) ?? 0
         Notes.remove(at: index)
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
     }
 
     func EditNote(modified: NoteModel) -> Void {
