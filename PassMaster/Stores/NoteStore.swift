@@ -55,6 +55,7 @@ class NoteStore : ObservableObject{
             temp.name = modified.name == original.name ? original.name : modified.name
             temp.note = modified.note == original.note ? original.note : modified.note
             Notes[index ?? 0] = temp
+            accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
         }
     }
      
