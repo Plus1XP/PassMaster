@@ -64,5 +64,6 @@ class NoteStore : ObservableObject{
         Notes = Notes.sorted(by: {( first:NoteModel, second: NoteModel) -> Bool in
             first.id < second.id
         })
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
     }
 }
