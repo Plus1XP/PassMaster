@@ -11,7 +11,9 @@ class AccountManager: ObservableObject {
     let manager: FileManager
     let encoder = JSONEncoder()
     let passmasterDirName: String
-    let passmasterFileName: String
+    
+    //Temporarily set file to var
+    var passmasterFileName: String
     
     init() {
         self.manager = FileManager.default
@@ -82,10 +84,6 @@ class AccountManager: ObservableObject {
     
     func GetStringFromData(url: URL) -> String {
         let data = manager.contents(atPath: url.path)!
-//        if manager.fileExists(atPath: url.path)
-//        {
-//            data = manager.contents(atPath: url.path)!
-//        }
         return data.base64EncodedString()
     }
     
