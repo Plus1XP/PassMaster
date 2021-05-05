@@ -95,6 +95,9 @@ class AccountManager: ObservableObject {
     func SetAccountData<T: Codable>(collectionKeyName: String, accountModel: [T]) -> Void {
         let collectionStore = [collectionKeyName: accountModel]
         
+        //Temporarily set file name to collectioname
+        passmasterFileName = String(collectionKeyName + ".json")
+        
         if !manager.fileExists(atPath: GetPassMasterFileUrl().path) {
             CreateJSONFromStore(collectionStore: collectionStore)
         } else {
@@ -105,6 +108,7 @@ class AccountManager: ObservableObject {
                 if RootJSONArray[index].first?.key == collectionKeyName {
                     UpdateJSONFromStore(collectionKeyName: collectionKeyName, accountModel: accountModel, RootJSONArray: RootJSONArray, index: index)
                     isCollectionUpdated = true
+                    //break
                 } else {
                     isCollectionMissing = true
                 }
@@ -170,12 +174,31 @@ class AccountManager: ObservableObject {
 //    }
     
     func GetAccountData<T: Codable>(collectionKeyName: String, collectionStore: inout [T]) -> Void {
+        
+        //Temporarily set file name to collectioname
+        passmasterFileName = String(collectionKeyName + ".json")
+        
         let RootJSONArray = ReadJSON(accountModel: collectionStore)
         for index in RootJSONArray.indices {
             if RootJSONArray[index].first?.key == collectionKeyName {
                 collectionStore = GetCollectionValues(collectionKeyName: collectionKeyName, collectionStore: RootJSONArray[index])
             }
         }
+    }
+    
+    func GetAccountData<T: Codable>(collectionKeyName: String, collectionStore: [T]) -> [T] {
+        
+        //Temporarily set file name to collectioname
+        passmasterFileName = String(collectionKeyName + ".json")
+        
+        var collectionStore = collectionStore
+        let RootJSONArray = ReadJSON(accountModel: collectionStore)
+        for index in RootJSONArray.indices {
+            if RootJSONArray[index].first?.key == collectionKeyName {
+                collectionStore = GetCollectionValues(collectionKeyName: collectionKeyName, collectionStore: RootJSONArray[index])
+            }
+        }
+        return collectionStore
     }
     
     func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
