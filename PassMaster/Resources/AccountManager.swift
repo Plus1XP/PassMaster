@@ -131,9 +131,21 @@ class AccountManager: ObservableObject {
         CreateFile(url: GetPassMasterFileUrl(), data: data!)
     }
     
+//    func CreateStructuredJSON() -> Void {
+//        let RootJSONArray = ["Passwords":[PasswordModel.empty],"Cards":[CardModel.empty],"Notes":[NoteModel.empty]]
+//        //let data = try! encoder.encode(RootJSONArray)
+//        var data: Data? = nil
+//        do {
+//            data = try encoder.encode(RootJSONArray)
+//        } catch {
+//            print("Create JSON Failed")
+//        }
+//        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+//    }
+    
     func UpdateJSONFromStore<T: Codable>(collectionKeyName: String, accountModel: [T], RootJSONArray: [[String:[T]]], index: Int) -> Void {
         var RootJSONArray = RootJSONArray
-        RootJSONArray[index][collectionKeyName]?.append(contentsOf: accountModel)
+        RootJSONArray[index][collectionKeyName] = accountModel
         //let data = try! encoder.encode(RootJSONArray)
         var data: Data? = nil
         do {
