@@ -171,20 +171,6 @@ class AccountManager: ObservableObject {
         CreateFile(url: GetPassMasterFileUrl(), data: data!)
     }
     
-//    func GetRawJSON<T: Codable>(collection: [T]) -> [[String:[T]]] {
-//        let JsonPath = GetPassMasterFileUrl().path
-//        let data = manager.contents(atPath: JsonPath)!
-//        let decoder = JSONDecoder()
-//        //return try! decoder.decode([[String:[T]]].self, from: data)
-//        var val: [[String:[T]]]? = nil
-//        do {
-//            val = try decoder.decode([[String:[T]]].self, from: data)
-//        } catch {
-//            print("Get Raw JSON Failed")
-//        }
-//        return val!
-//    }
-    
     func GetAccountData<T: Codable>(collectionKeyName: String, collectionStore: inout [T]) -> Void {
         
         //Temporarily set file name to collectioname
@@ -213,19 +199,106 @@ class AccountManager: ObservableObject {
         return collectionStore
     }
     
+    /*
     func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
+        
+        var RawJSONArray: [[String:[T]]] = [[:]]
         let JsonPath = GetPassMasterFileUrl().path
         let data = manager.contents(atPath: JsonPath)!
         let decoder = JSONDecoder()
-        //return try! decoder.decode([[String:[T]]].self, from: data)
-        var RawJSONArray: [[String:[T]]]? = nil
-        do {
-            RawJSONArray = try decoder.decode([[String:[T]]].self, from: data)
-        } catch {
-            print("Read Raw JSON Failed")
+        let json = try? JSONSerialization.jsonObject(with: data, options: [])
+        var array: [T]? = nil
+        var array2: [String:[T]] = [:]
+        var data2: Data? = nil
+        
+        for collection in json as! [Dictionary<String,Any>] {
+//            RawJSONArray!.append(collection as! [String : [T]])
+//            RawJSONArray![0] = collection as! [String : [T]]
+            
+            if let pass = collection["Passwords"] as? [String:[T]] {
+                var array2 = pass
+            }
+            
+            
+            
+            for store in collection {
+                                
+                if store.key as? String == "Passwords" {
+
+                    let jsonData = try! JSONEncoder().encode(store.value)
+                    print(jsonData)
+                    
+                    
+//                    array2 = store as? [String:[T]]
+                    
+//                    data2 = try encoder.encode(store)
+                    
+//                    var array2 = store.value as? NSArray
+//                    array = array2 as? [T]
+                    print("WORKING")
+                }
+//                if store.key as! String == "Passwords" {
+//                    print(store.value)
+//                    var val = store.value
+//                    array = store.value as! [T]
+//                }
+            }
         }
-        return RawJSONArray!
+//        if let password = json as? [String: Any] {
+//            if let yield = password["Passwords"] as? Int {
+//                //recipeObject.yield = yield
+//            }
+//        }
+        
+//        var RawJSONArray: [[String:[T]]]? = nil
+//        if manager.fileExists(atPath: GetPassMasterFileUrl().path) {
+//            let JsonPath = GetPassMasterFileUrl().path
+//            let data = manager.contents(atPath: JsonPath)!
+//            let decoder = JSONDecoder()
+//            //return try! decoder.decode([[String:[T]]].self, from: data)
+//            do {
+//                RawJSONArray = try decoder.decode([[String:[T]]].self, from: data)
+//            } catch {
+//                print("Read Raw JSON Failed")
+//            }
+//        }
+        return RawJSONArray ?? [["ERROR":[T].init()]]
     }
+    */
+    func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
+        var RawJSONArray: [[String:[T]]] = [[:]]
+        if manager.fileExists(atPath: GetPassMasterFileUrl().path) {
+            let JsonPath = GetPassMasterFileUrl().path
+            if let data = manager.contents(atPath: JsonPath) {
+                let decoder = JSONDecoder()
+                do {
+                    RawJSONArray = try decoder.decode([[String:[T]]].self, from: data)
+                } catch {
+                    print("Read Raw JSON Failed")
+                }
+            } else {
+                print("File Error")
+            }
+        }
+        return RawJSONArray
+    }
+    
+    
+//    func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
+//        var RawJSONArray: [[String:[T]]]? = nil
+//        if manager.fileExists(atPath: GetPassMasterFileUrl().path) {
+//            let JsonPath = GetPassMasterFileUrl().path
+//            let data = manager.contents(atPath: JsonPath)!
+//            let decoder = JSONDecoder()
+//            //return try! decoder.decode([[String:[T]]].self, from: data)
+//            do {
+//                RawJSONArray = try decoder.decode([[String:[T]]].self, from: data)
+//            } catch {
+//                print("Read Raw JSON Failed")
+//            }
+//        }
+//        return RawJSONArray ?? [["ERROR":[T].init()]]
+//    }
     
     func GetCollectionValues<T>(collectionKeyName: String, collectionStore: [String:[T]]) -> [T] {
         var accountModel: [T] = [T].init()
