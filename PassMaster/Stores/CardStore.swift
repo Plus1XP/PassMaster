@@ -17,7 +17,6 @@ class CardStore : ObservableObject{
         self.Cards = [CardModel].init()
         self.accountManager = AccountManager()
         self.collectionKey = "Cards"
-        self.Cards = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Cards)
         self.GetCardData()
     }
     
@@ -29,6 +28,10 @@ class CardStore : ObservableObject{
         self.Cards = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Cards)
     }
     
+    func SetCardData() -> Void {
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
+    }
+    
     func AddCard(account: CardModel) -> Void {
         var card : CardModel
         card = account
@@ -36,13 +39,13 @@ class CardStore : ObservableObject{
         card.AccountType = .Card
         
         Cards.append(card)
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
+        self.SetCardData()
     }
 
     func RemoveCard(id: Int) {
         let index = Cards.firstIndex(where: {$0.id == id}) ?? 0
         Cards.remove(at: index)
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
+        self.SetCardData()
     }
     
     func EditCard(modified: CardModel) -> Void {
@@ -61,7 +64,7 @@ class CardStore : ObservableObject{
             temp.note = modified.note == original.note ? original.note : modified.note
             
             Cards[index ?? 0] = temp
-            accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
+            self.SetCardData()
         }
     }
   
@@ -70,6 +73,6 @@ class CardStore : ObservableObject{
         Cards = Cards.sorted(by: {( first: CardModel, second: CardModel) -> Bool in
             first.id < second.id
         })
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Cards)
+        self.SetCardData()
     }
 }

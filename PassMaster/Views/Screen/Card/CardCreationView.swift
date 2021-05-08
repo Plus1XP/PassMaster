@@ -16,7 +16,8 @@ struct CardCreationView: View {
         NavigationView {
             Form{
                 CardEditForm(account: $card)
-            }.navigationBarTitle(Text(card.name))
+            }
+            .navigationBarTitle(Text(card.name))
             .navigationBarItems(
                 leading:
                     Button(action: {
