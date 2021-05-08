@@ -31,6 +31,10 @@ class PasswordStore : ObservableObject{
         self.Passwords = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Passwords)
     }
     
+    func SetPasswordData() -> Void {
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
+    }
+    
     func AddPassword(account : PasswordModel) -> Void {
         var password: PasswordModel
         password = account
@@ -38,13 +42,13 @@ class PasswordStore : ObservableObject{
         password.AccountType = .Password
         
         Passwords.append(password)
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
+        self.SetPasswordData()
     }
     
     func RemovePassword(id: Int) {
         let index = Passwords.firstIndex(where: {$0.id == id}) ?? 0
         Passwords.remove(at: index)
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
+        self.SetPasswordData()
     }
    
     func EditPassword(modified: PasswordModel) -> Void {
@@ -62,7 +66,7 @@ class PasswordStore : ObservableObject{
             temp.note = modified.note == original.note ? original.note : modified.note
             
             Passwords[index ?? 0] = temp
-            accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
+            self.SetPasswordData()
         }
     }
    
@@ -71,6 +75,6 @@ class PasswordStore : ObservableObject{
         Passwords = Passwords.sorted(by: { (first: PasswordModel, second: PasswordModel) -> Bool in
             first.id < second.id
         })
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Passwords)
+        self.SetPasswordData()
     }
 }
