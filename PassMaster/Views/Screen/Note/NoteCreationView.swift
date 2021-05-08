@@ -16,7 +16,8 @@ struct NoteCreationView: View {
         NavigationView {
             Form{
                 NoteEditForm(account: $note)
-            }.navigationBarTitle(Text(note.name))
+            }
+            .navigationBarTitle(Text(note.name))
             .navigationBarItems(
                 leading:
                     Button(action: {

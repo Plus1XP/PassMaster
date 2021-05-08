@@ -29,6 +29,10 @@ class NoteStore : ObservableObject{
     func GetNoteData() -> Void {
         self.Notes = accountManager.GetAccountData(collectionKeyName: collectionKey, collectionStore: Notes)
     }
+    
+    func SetNoteData() -> Void {
+        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
+    }
 
     func AddNote(account: NoteModel) -> Void {
         var note: NoteModel
@@ -37,13 +41,13 @@ class NoteStore : ObservableObject{
         note.AccountType = .Note
         
         Notes.append(note)
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
+        self.SetNoteData()
     }
 
     func RemoveNote(id: Int) {
         let index = Notes.firstIndex(where: {$0.id == id}) ?? 0
         Notes.remove(at: index)
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
+        self.SetNoteData()
     }
 
     func EditNote(modified: NoteModel) -> Void {
@@ -55,7 +59,7 @@ class NoteStore : ObservableObject{
             temp.name = modified.name == original.name ? original.name : modified.name
             temp.note = modified.note == original.note ? original.note : modified.note
             Notes[index ?? 0] = temp
-            accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
+            self.SetNoteData()
         }
     }
      
@@ -64,6 +68,6 @@ class NoteStore : ObservableObject{
         Notes = Notes.sorted(by: {( first:NoteModel, second: NoteModel) -> Bool in
             first.id < second.id
         })
-        accountManager.SetAccountData(collectionKeyName: collectionKey, accountModel: Notes)
+        self.SetNoteData()
     }
 }
