@@ -10,7 +10,6 @@ import Foundation
 class AccountManager: ObservableObject {
     let manager: FileManager
     let encoder = JSONEncoder()
-    let passmasterDirName: String
     
     //Temporarily set file to var
     var passmasterFileName: String
@@ -18,33 +17,27 @@ class AccountManager: ObservableObject {
     init() {
         self.manager = FileManager.default
         self.encoder.outputFormatting = .prettyPrinted
-        self.passmasterDirName = "PassMaster"
         self.passmasterFileName = "accounts.json"
     }
     
-    func GetDocumentsUrl() -> URL {
+    func GetDocumentsDirectoryUrl() -> URL {
         let path = manager.urls(for: .documentDirectory,
                                  in: .userDomainMask)
         let documentsDirectory = path[0]
         return documentsDirectory
     }
     
-    func GetPassMasterUrl() -> URL {
-        let passmasterDirectory = GetDocumentsUrl().appendingPathComponent(passmasterDirName)
-        return passmasterDirectory
-    }
-    
-    func GetPassMasterFileUrl() -> URL {
-        let file = GetPassMasterUrl().appendingPathComponent(passmasterFileName)
+    func GetDocumentsFileUrl() -> URL {
+        let file = GetDocumentsDirectoryUrl().appendingPathComponent(passmasterFileName)
         return file
     }
     
     func CreateDirectory(url: URL) -> Void {
         do {
             try manager.createDirectory(
-                at: url,
+                atPath: url.path,
                 withIntermediateDirectories: true,
-                attributes: [:]
+                attributes: nil
             )
         }
         catch {
@@ -82,6 +75,11 @@ class AccountManager: ObservableObject {
         }
     }
     
+    func UpdateFile(data: Data) -> Void {
+        RemoveFile(url: GetDocumentsFileUrl())
+        CreateFile(url: GetDocumentsFileUrl(), data: data)
+    }
+    
     func GetStringFromData(url: URL) -> String {
         let data = manager.contents(atPath: url.path)!
         return data.base64EncodedString()
@@ -98,7 +96,7 @@ class AccountManager: ObservableObject {
         //Temporarily set file name to collectioname
         passmasterFileName = String(collectionKeyName + ".json")
         
-        if !manager.fileExists(atPath: GetPassMasterFileUrl().path) {
+        if !manager.fileExists(atPath: GetDocumentsFileUrl().path) {
             CreateJSONFromStore(collectionStore: collectionStore)
         } else {
             var isCollectionUpdated = false
@@ -128,20 +126,9 @@ class AccountManager: ObservableObject {
         } catch {
             print("Create JSON Failed")
         }
-        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+        CreateFile(url: GetDocumentsFileUrl(), data: data!)
+ 
     }
-    
-//    func CreateStructuredJSON() -> Void {
-//        let RootJSONArray = ["Passwords":[PasswordModel.empty],"Cards":[CardModel.empty],"Notes":[NoteModel.empty]]
-//        //let data = try! encoder.encode(RootJSONArray)
-//        var data: Data? = nil
-//        do {
-//            data = try encoder.encode(RootJSONArray)
-//        } catch {
-//            print("Create JSON Failed")
-//        }
-//        CreateFile(url: GetPassMasterFileUrl(), data: data!)
-//    }
     
     func UpdateJSONFromStore<T: Codable>(collectionKeyName: String, accountModel: [T], RootJSONArray: [[String:[T]]], index: Int) -> Void {
         var RootJSONArray = RootJSONArray
@@ -153,8 +140,10 @@ class AccountManager: ObservableObject {
         } catch {
             print("Update JSON Failed")
         }
-        RemoveFile(url: GetPassMasterFileUrl())
-        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+//        RemoveFile(url: GetDocumentsFileUrl())
+//        CreateFile(url: GetDocumentsFileUrl(), data: data!)
+        UpdateFile(data: data!)
+        print(GetDocumentsFileUrl())
     }
     
     func AddToJSONFromStore<T: Codable>(RootJSONArray: [[String:[T]]], collectionStore: [String:[T]]) -> Void {
@@ -167,8 +156,11 @@ class AccountManager: ObservableObject {
         } catch {
             print("Add to JSON Failed")
         }
-        RemoveFile(url: GetPassMasterFileUrl())
-        CreateFile(url: GetPassMasterFileUrl(), data: data!)
+//        RemoveFile(url: GetDocumentsFileUrl())
+//        CreateFile(url: GetDocumentsFileUrl(), data: data!)
+        UpdateFile(data: data!)
+        print(GetDocumentsFileUrl())
+
     }
     
     func GetAccountData<T: Codable>(collectionKeyName: String, collectionStore: inout [T]) -> Void {
@@ -199,76 +191,10 @@ class AccountManager: ObservableObject {
         return collectionStore
     }
     
-    /*
-    func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
-        
-        var RawJSONArray: [[String:[T]]] = [[:]]
-        let JsonPath = GetPassMasterFileUrl().path
-        let data = manager.contents(atPath: JsonPath)!
-        let decoder = JSONDecoder()
-        let json = try? JSONSerialization.jsonObject(with: data, options: [])
-        var array: [T]? = nil
-        var array2: [String:[T]] = [:]
-        var data2: Data? = nil
-        
-        for collection in json as! [Dictionary<String,Any>] {
-//            RawJSONArray!.append(collection as! [String : [T]])
-//            RawJSONArray![0] = collection as! [String : [T]]
-            
-            if let pass = collection["Passwords"] as? [String:[T]] {
-                var array2 = pass
-            }
-            
-            
-            
-            for store in collection {
-                                
-                if store.key as? String == "Passwords" {
-
-                    let jsonData = try! JSONEncoder().encode(store.value)
-                    print(jsonData)
-                    
-                    
-//                    array2 = store as? [String:[T]]
-                    
-//                    data2 = try encoder.encode(store)
-                    
-//                    var array2 = store.value as? NSArray
-//                    array = array2 as? [T]
-                    print("WORKING")
-                }
-//                if store.key as! String == "Passwords" {
-//                    print(store.value)
-//                    var val = store.value
-//                    array = store.value as! [T]
-//                }
-            }
-        }
-//        if let password = json as? [String: Any] {
-//            if let yield = password["Passwords"] as? Int {
-//                //recipeObject.yield = yield
-//            }
-//        }
-        
-//        var RawJSONArray: [[String:[T]]]? = nil
-//        if manager.fileExists(atPath: GetPassMasterFileUrl().path) {
-//            let JsonPath = GetPassMasterFileUrl().path
-//            let data = manager.contents(atPath: JsonPath)!
-//            let decoder = JSONDecoder()
-//            //return try! decoder.decode([[String:[T]]].self, from: data)
-//            do {
-//                RawJSONArray = try decoder.decode([[String:[T]]].self, from: data)
-//            } catch {
-//                print("Read Raw JSON Failed")
-//            }
-//        }
-        return RawJSONArray ?? [["ERROR":[T].init()]]
-    }
-    */
     func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
         var RawJSONArray: [[String:[T]]] = [[:]]
-        if manager.fileExists(atPath: GetPassMasterFileUrl().path) {
-            let JsonPath = GetPassMasterFileUrl().path
+        if manager.fileExists(atPath: GetDocumentsFileUrl().path) {
+            let JsonPath = GetDocumentsFileUrl().path
             if let data = manager.contents(atPath: JsonPath) {
                 let decoder = JSONDecoder()
                 do {
@@ -281,8 +207,7 @@ class AccountManager: ObservableObject {
             }
         }
         return RawJSONArray
-    }
-    
+    }    
     
 //    func ReadJSON<T: Codable>(accountModel: [T]) -> [[String:[T]]] {
 //        var RawJSONArray: [[String:[T]]]? = nil
