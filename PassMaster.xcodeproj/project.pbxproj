@@ -43,6 +43,7 @@
 		6EA4999A25F00B83006D7FC6 /* BlurTextStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4999925F00B83006D7FC6 /* BlurTextStore.swift */; };
 		6EA5D75025EABB33009E00A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5D74F25EABB33009E00A6 /* HomeView.swift */; };
 		6EAC5C38260129DA007511F8 /* PasswordEditForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAC5C37260129DA007511F8 /* PasswordEditForm.swift */; };
+		6EC02C68266278A60062E153 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC02C67266278A60062E153 /* AuthenticationManager.swift */; };
 		6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED00F6825F027B500892340 /* NoteDetailsView.swift */; };
 		6ED1369A2604F5EE00510DB0 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED136992604F5EE00510DB0 /* TextStyle.swift */; };
 		6EE0D9142606917A00E3A96B /* PasswordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE0D9132606917900E3A96B /* PasswordStore.swift */; };
@@ -98,6 +99,7 @@
 		6EA4999925F00B83006D7FC6 /* BlurTextStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurTextStore.swift; sourceTree = "<group>"; };
 		6EA5D74F25EABB33009E00A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6EAC5C37260129DA007511F8 /* PasswordEditForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditForm.swift; sourceTree = "<group>"; };
+		6EC02C67266278A60062E153 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		6ED00F6825F027B500892340 /* NoteDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsView.swift; sourceTree = "<group>"; };
 		6ED136992604F5EE00510DB0 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		6EE0D9132606917900E3A96B /* PasswordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStore.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				6E09B5C1260D02C600E9A0A8 /* AccountManager.swift */,
+				6EC02C67266278A60062E153 /* AuthenticationManager.swift */,
 				6E32A0E92635FDE200469BDD /* EncryptionManager.swift */,
 			);
 			path = Resources;
@@ -436,6 +439,7 @@
 				6EA5D75025EABB33009E00A6 /* HomeView.swift in Sources */,
 				6E40BCE625F54F700023F4DF /* Binding.swift in Sources */,
 				6EF2B09F2603C77A00A60A9D /* CardDetailsForm.swift in Sources */,
+				6EC02C68266278A60062E153 /* AuthenticationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
