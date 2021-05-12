@@ -16,6 +16,7 @@
 		6E21C0DF25F51C5E006A395E /* NoteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */; };
 		6E21C0E225F51C70006A395E /* CardCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0E125F51C70006A395E /* CardCreationView.swift */; };
 		6E21C0E525F53551006A395E /* PasswordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21C0E425F53551006A395E /* PasswordEditView.swift */; };
+		6E22083026629E49008F75A3 /* BiometricManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22082F26629E49008F75A3 /* BiometricManager.swift */; };
 		6E32A0EA2635FDE200469BDD /* EncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32A0E92635FDE200469BDD /* EncryptionManager.swift */; };
 		6E3DD17426012EF400BDDCDE /* DismissLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3DD17326012EF400BDDCDE /* DismissLabel.swift */; };
 		6E3DD17726012F3D00BDDCDE /* SaveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3DD17626012F3D00BDDCDE /* SaveLabel.swift */; };
@@ -70,6 +71,7 @@
 		6E21C0DE25F51C5E006A395E /* NoteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCreationView.swift; sourceTree = "<group>"; };
 		6E21C0E125F51C70006A395E /* CardCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationView.swift; sourceTree = "<group>"; };
 		6E21C0E425F53551006A395E /* PasswordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEditView.swift; sourceTree = "<group>"; };
+		6E22082F26629E49008F75A3 /* BiometricManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManager.swift; sourceTree = "<group>"; };
 		6E32A0E92635FDE200469BDD /* EncryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionManager.swift; sourceTree = "<group>"; };
 		6E3DD17326012EF400BDDCDE /* DismissLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissLabel.swift; sourceTree = "<group>"; };
 		6E3DD17626012F3D00BDDCDE /* SaveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLabel.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				6E09B5C1260D02C600E9A0A8 /* AccountManager.swift */,
 				6EC02C67266278A60062E153 /* AuthenticationManager.swift */,
 				6E32A0E92635FDE200469BDD /* EncryptionManager.swift */,
+				6E22082F26629E49008F75A3 /* BiometricManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				6EF1481025EAA183005A21F8 /* PasswordDetailsView.swift in Sources */,
 				6E21C0CB25F2C706006A395E /* AccountType.swift in Sources */,
 				6E09B5C2260D02C600E9A0A8 /* AccountManager.swift in Sources */,
+				6E22083026629E49008F75A3 /* BiometricManager.swift in Sources */,
 				6E21C0D125F2E81B006A395E /* CardView.swift in Sources */,
 				6ED00F6925F027B500892340 /* NoteDetailsView.swift in Sources */,
 				6EE0D91A2606919800E3A96B /* NoteStore.swift in Sources */,
