@@ -90,6 +90,24 @@ class AccountManager: ObservableObject {
         return localData
     }
     
+    let e = EncryptionManager()
+    
+    func get() -> Void {
+//        let e = EncryptionManager()
+        do {
+            let results = try e.DecryptText(cipherText: String(contentsOf: GetDocumentsDirectoryUrl().appendingPathComponent("Testfile.txt"), encoding: .utf8))
+            print(results)
+            //        CreateFile(url: GetDocumentsDirectoryUrl().appendingPathComponent("Testfile.txt"), data: GetDataFromString(data: e.EncryptText(plainText: "Hello Encryption")))
+        } catch {
+            print("Error Custom decrypt")
+        }
+    }
+    
+    func set() -> Void {
+//        let e = EncryptionManager()
+        CreateFile(url: GetDocumentsDirectoryUrl().appendingPathComponent("Testfile.txt"), data: GetDataFromString(data: e.EncryptText(plainText: "Hello Encryption"))) 
+    }
+    
     func SetAccountData<T: Codable>(collectionKeyName: String, accountModel: [T]) -> Void {
         let collectionStore = [collectionKeyName: accountModel]
         
