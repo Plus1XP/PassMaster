@@ -18,6 +18,9 @@ class PasswordStore : ObservableObject{
         self.accountManager = AccountManager()
         self.collectionKey = "Passwords"
         self.GetPasswordData()
+        //accountManager.set()
+        //accountManager.get()
+
     }
     
     func GetNewPasswordId() -> Int {
@@ -36,6 +39,7 @@ class PasswordStore : ObservableObject{
     }
     
     func AddPassword(account : PasswordModel) -> Void {
+        accountManager.get()
         var password: PasswordModel
         password = account
         password.id = GetNewPasswordId()
