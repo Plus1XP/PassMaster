@@ -8,22 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var canShowSelectionView: Bool = false
-
+    @StateObject private var biometricManager = BiometricManager()
+    
+//    @StateObject private var authenticationManager = AuthenticationManager()
+//    @State private var isAuthenticated = false
+    
     var body: some View {
+        
         Button(action: {
             print("Button Pushed")
-            self.canShowSelectionView = true
+            biometricManager.authenticate()
         }, label: {
-            Text("Login")
-        }).fullScreenCover(isPresented: self.$canShowSelectionView) {
+            Label("Login", systemImage: "faceid")
+        }).fullScreenCover(isPresented: $biometricManager.isUnlocked) {
             HomeView()
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+        
+//        Button(action: {
+//            print("authenticate button Pushed")
+//            authenticationManager.canEvaluate { (canEvaluate, _, canEvaluateError) in
+//                guard canEvaluate else {
+//                    // Face ID/Touch ID may not be available or configured
+//                    print("authentication not available")
+//                    return
+//                }
+//                authenticationManager.evaluate { (success, error) in
+//                    guard success else {
+//                        // Face ID/Touch ID may not be configured
+//                        print("authentication not configured")
+//                        return
+//                    }
+//                    // You are successfully verified
+//                    print("authentication successful")
+//                    self.isAuthenticated = true
+//                }
+//            }
+//        }, label: {
+//            Label("Login", systemImage: "faceid")
+//        }).fullScreenCover(isPresented: self.$isAuthenticated) {
+//            HomeView()
+//        }
+//    }
 }
