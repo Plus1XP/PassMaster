@@ -183,6 +183,7 @@
 		6E9AB54D25E7D95400DC88FF = {
 			isa = PBXGroup;
 			children = (
+				6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */,
 				6E9AB55825E7D95400DC88FF /* PassMaster */,
 				6E9AB55725E7D95400DC88FF /* Products */,
 			);
@@ -199,12 +200,11 @@
 		6E9AB55825E7D95400DC88FF /* PassMaster */ = {
 			isa = PBXGroup;
 			children = (
-				6E9AB55D25E7D95700DC88FF /* Assets.xcassets */,
 				6E9AB55B25E7D95400DC88FF /* ContentView.swift */,
+				6E9AB55D25E7D95700DC88FF /* Assets.xcassets */,
 				6E40BCE425F54DB50023F4DF /* Extensions */,
 				6E9AB56225E7D95700DC88FF /* Info.plist */,
 				6EF147E825E7F830005A21F8 /* Models */,
-				6E9AB55925E7D95400DC88FF /* PassMasterApp.swift */,
 				6E9AB55F25E7D95700DC88FF /* Preview Content */,
 				6EF22AEA260379BD006270D3 /* Resources */,
 				6EF22AE9260379B5006270D3 /* Stores */,
